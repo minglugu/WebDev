@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>填写建立</title>
+</head>
+<body>
+    <h1>请填写简历信息</h1>
+    <!-- 用 table 的 tags 来对齐 -->
+    <table>
+        <!-- name -->
+        <tr>
+            <td>
+                姓名
+            </td>
+            <td>
+                <input type="text">
+            </td>
+        </tr>
+        <!-- 选择性别 -->
+        <tr>
+            <td>
+                性别
+            </td>
+            <td>
+                <!-- name 同时为 gender，才能有互斥的效果 -->
+                <input type="radio" name="gender" id="male">
+                <label for="male">
+                    <img src="./malevector.jpg" alt="" width="30px"> 男
+                </label> 
+
+                <input type="radio" name="gender" id="female" checked="checked">
+                <label for="female">
+                    <img src="./femalevector.jpg" alt="" width="30px"> 女
+                </label> 
+                
+            </td>
+        </tr>
+
+    </table>
+</body>
+</html>
