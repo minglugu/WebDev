@@ -7,6 +7,102 @@
     <title>This is title - webbrowser's </title>
 </head>
 <body>
+
+    <!-- 表单标签 form 让用户输入信息，并提交到服务器上，以下 html tag 是搭配 form 表单使用的-->
+    <form>
+        <!-- 数据框的形态，此处是单行文本框，不能换行-->
+        <!-- <input type="text"> <br> -->
+        <!-- 此处是单行文本框，可以输入密码 -->
+        <!-- <input type="password"> <br> -->
+
+        <!-- 单选框的效果，加name属性 checked 页面加载的时候，自动选中-->
+        <!-- 让 input 标签搭配 label 标签，实现点击文字，也能选中选项的效果 -->
+        <!-- 用 id 属性，与 for 进行了关联 -->
+        <!-- <input type="radio" name="gender" id="male"> 
+        <label for="male">男</label>
+        <input type="radio" name="gender" id="female" checked> 
+        <label for="female">女</label> -->
+
+        <br>
+
+        <!-- 复选框 checked属性，来选中默认对象-->
+        <!-- <input type="checkbox"> 吃饭
+        <input type="checkbox"> 睡觉
+        <input type="checkbox"> 打游戏
+        <input type="checkbox" checked> 做作业 -->
+
+        <!-- 按钮 button，value 中显示的是button的文字，用JS 的 onclick-->
+        <!-- <input type="button" value="这是按钮" onclick="alert('hello')"> -->
+
+        <!-- button 同样的效果，更加常用-->
+        <!-- <button onclick="alert('hello')">这也是按钮</button> -->
+
+        <!-- 上传文件，点击选则文件，就会弹出一个对话框，就可以选中本地的一个文件，然后提交/上传 文件到服务器 -->
+        <!-- <input type="file"> -->
+
+        <!-- 用select 表示 dropdown menu, 每个菜单选项，是一个option tag，可以使用selected 来表示默认的选项是什么 -->
+        <!-- <select>
+            <option>-- 请选择年份--</option>
+            <option>2000</option>
+            <option selected="selected">2001</option>
+            <option>2002</option>
+            <option>2003</option>
+            <option>2004</option>
+        </select> -->
+
+        <!-- textarea 多行编辑框 -->
+        <!-- <textarea cols="30" rows="10"></textarea> -->
+    </form>
+
+    <!-- 无序列表 ul -->
+    <!-- 实际开发中的常用此类，使用场景，导航和分类，并列的关系的元素罗列到一起 -->
+    <!-- <h3>无序列表</h3>
+    <ul>
+        <li>阿叶君</li>
+        <li>兔子舞</li>
+        <li>无人机</li>
+    </ul>
+
+    <h3>有序列表</h3>
+    <ol>
+        <li>阿叶君</li>
+        <li>兔子舞</li>
+        <li>无人机</li>
+    </ol>
+
+    <h3>自定义列表</h3>
+    <dl>
+        <dt>我的玩具们</dt>
+        <dd>阿叶君</dd>
+        <dd>无人机</dd>
+        <dd>兔子舞</dd>
+    </dl> -->
+
+    <!-- 表格标签， table, tr, td, th, thead, tbody -->
+    <!-- td tag 里面的内容居中 -->
+    <!-- <style>
+        td {
+            text-align: center;
+        }
+    </style> -->
+    <!-- cellspacing 去除表格cell之间的间隔 可以用CSS来实现，很少使用table的属性-->
+    <!-- <table border="2px" width="500px" height="300px" cellspacing="0">
+        <tr>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>年龄</th>
+        </tr>
+        <tr>
+            <td>张三</td>
+            <td colspan="2">男</td>
+        </tr>
+        <tr>
+            <td>李四</td>
+            <td>女</td>
+            <td>11</td>
+        </tr>
+    </table> -->
+
     <!-- use absolute path -->
     <!-- <img src="C:\Users\LuLu\bit_github\WebDev\20220418\Zebra.jpg" alt="zebra picture"> -->
 
@@ -33,9 +129,9 @@
     <!-- <a href="test.zip">下载文件，包含zip的文件</a> -->
 
     <!-- 如果把图片放到 a 标签里面，就可以实现，点击图片后，跳转的效果 -->
-    <a href="http://www.google.ca">
+    <!-- <a href="http://www.google.ca">
         <img src="Zebra.jpg" alt="斑马图片">
-    </a>
+    </a> -->
 
     <!-- anchor link, 点击后，在本页面里面，跳转到特定的某个位子 -->
 
