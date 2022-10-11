@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./test.css">
+    <title>CSS</title>
+</head>
+<body>
+    <!-- normally, style is in a separate css file. Here is just an simple example in html file -->
+    <style>
+        /* p {
+            color: red;
+        } */
+
+        /* 以 . 开头的这个就是 CSS 中的类名 class */
+        /* .red {
+            color: red;
+            font-size: 40 px;
+        } */
+
+        /* wildcard "*" */
+        /* 
+        
+        * {
+            margin: 12px;
+            padding: auto;
+            box-sizing: border-box;
+        } 
+        
+        */
+
+        /* descendant selector: select li in ul tag */
+        /* ul li {
+            color: aqua;
+        } */
+
+        /* another descendant selector example */
+        /* ul .catname {
+            color: blue;
+        } */
+
+        /* child selector */
+        /* ul > .catname {
+            color: tomato;
+        } */
+
+        /* no effect on the first li tag, as ">" is selecting the child li */
+        /* ul>a {
+            color: pink;
+        } */
+
+        /* select all elements: select all li. no effect on <a> element */
+        /* ul>li, ol>li {
+            color: aqua;
+        } */
+
+        /*  CSS Pseudo-classes 
+            https://www.w3schools.com/css/css_pseudo_classes.asp  */
+
+        /* div {
+            color: aqua;
+            
+        } */
+        /* 鼠标悬停的时候，鼠标的样式，动态变化的效果*/
+        /* div:hover {
+            color: red;
+        } */
+
+        /* 鼠标按下的时候，应用这个样式 */
+        /* div:active {
+            color: green;
+        } */
+
+        /* CSS properties 
+            https://www.w3schools.com/csSref/pr_font_weight.asp  */
+        /* .one {            
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 80px;
+            font-weight: 900;
+        }
+
+        .two {
+            font-size: 10px;
+            font-weight: 100;
+        } */
+
+        /* div {
+            color: red;
+        } */
+
+        /* .one {
+            color: rgb(0,255,0);
+        }
+        .two {
+            color: rgb(128,255,0);
+        }
+        .three {
+            color: rgb(0,128,0);
+        } */
+
+        /* another way of presenting the color in lowercase or uppercase
+        #XXYYZZ => #XYZ */
+        .one {
+            color: #0f0;
+        }
+        .two {
+            color: #80ff00;
+        }
+        .three {
+            color: #008000;
+        }
+    </style>
+
+    <div class="one">这是一段话</div>
+    <div class="two">这是一段话</div>
+    <div class="three">这是一段话</div>
+
+
+<!-- 
+    <div class="one">
+        This is line.
+    </div>
+
+    <div class="two">
+        This is another line.
+    </div> -->
+
+
+    <!-- <div>这是一个 div</div> -->
+    
+    <!-- <ul>
+        <li class="catname">喵喵</li>
+        <li><a href="#">喵喵</a></li>
+        <li>喵喵</li>
+    </ul>
+
+    <ol>
+        <li class="catname">喵喵</li>
+        <li><a href="#">喵喵</a></li>
+        <li>喵喵</li>
+    </ol> -->
+
+
+    <!-- <p class="red">
+        hello world
+    </p>
+
+    <p>
+        hello java
+    </p> -->
+
+</body>
+</html>
