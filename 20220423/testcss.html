@@ -122,7 +122,7 @@
             margin-top: 15px;
         } */
 
-        .one {
+        /* .one {
             width: 500px;
             height: 200px;
             background-color: red;
@@ -131,18 +131,55 @@
         .two {
             width: 200px;
             height: 100px;
-            background-color: green;
+            background-color: green; */
             /* 上下外边距为0，左右外边距(水平方向)为auto，浏览器自动去适应 */
-            margin: 0 auto;
+            /* margin: 0 auto;
         }
-        
-    </style>
+         */
 
-        <div class="one">
+        /* 弹性布局 Flexible Box */
+        /* flex 布局中的常见的三种操作
+            1. 设置为弹性布局：display: flex 
+            2. 设置水平方向排列：justify-content 来实现
+            3. 设置垂直方向排列：align-items 来实现。
+            */
+        .parent {
+            /* 让当前元素的宽度，跟它的parent （此处是body）一样宽， */
+            width: 100%;
+            height: 200px;
+            background-color: grey;
+
+            /* 为了让里面的子元素排列到一行，需要用弹性布局。 */
+            display: flex;
+
+            /* 水平方向的排列方式：justify-content */
+            justify-content: space-around;
+
+            /* 垂直方向，vertical alignment, 垂直居中*/
+            align-items: center;
+        }
+
+        /* 因为是块级元素(div)，所以是独占一行的 */        
+        .one {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+    
+        <div class="parent">
+            <div class="one">1</div>
+            <div class="one">2</div>
+            <div class="one">3</div>
+            <div class="one">4</div>
+            <div class="one">5</div>
+        </div>
+
+        <!-- <div class="one">
             <div class="two">
                 hello
             </div>
-        </div>
+        </div> -->
 
         <!-- <div class="one">
             这是一个元素
