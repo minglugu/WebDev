@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- <script>
+        console.log("hello, log");
+    </script> -->
+
+    <!-- <script>
+        // 1. js 写法 1。
+        // alert('hello world');
+    </script> -->
+
+    <!-- 2. js 写法 2。把 js 写到了 html 元素的内部 -->
+    <!-- <button onclick="alert('hello')">这是一个按钮</button> -->
+
+    <!-- 3. 写法 3。建立app.js的单独文件，再引入到 html 文件里面-->
+    <!-- <script src="app.js"></script> -->
+
+    <script>
+        let a = 10;
+        let b = '10';
+
+        // == != 只比较两个变量的值，不比较两个变量的类型。会做类型转换
+        console.log(a == b); // true
+
+        // === !== 同时比较两个变量的值和类型
+        console.log(a === b); // false
+
+        // 未定义的情况(非法情况)
+        // let anumber;
+        // console.log(anumber);
+
+        // bnumber表示“没有值”，合法情况。
+        // let bnumber = null;
+        // console.log(bnumber);
+
+        // 变量的类型，可以在运行过程中，随着赋值而发生改变。称为"动态类型"
+        // var a = 10;
+        // a = "hello";
+        // console.log(a);
+
+        // console.log('hello' - 10); // NaN
+        // console.log('hello' + 10); // hello10
+
+        // or 'My name is "Lulu." '
+        // let s = "My name is 'Lulu.' ";
+        // console.log(s);
+
+        // let str = "你好"
+        // console.log(str.length); // 2
+
+        // 字符串拼接
+        // let a = hello;
+        // let b = 20
+        // console.log(a+b); // hello20
+
+        // var a = 10;
+        // a = 20;
+        // console.log(a);
+
+        // variable
+        // var num = 10; // 数字类型变量
+        // var s = 'hello'; // String类型变量
+        // var arr = []; // 数组类型的变量
+
+        // boolean 1 or 0
+        // let a = true;
+        // console.log(a + 1); // 2
+
+    </script>
+
+</body>
+</html>
