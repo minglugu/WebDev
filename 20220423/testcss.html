@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS practice</title>
+</head>
+<body>
+    <style>
+        /* a {
+            text-decoration: none;
+        }
+        div {
+            text-decoration: underline;
+            text-decoration: line-through;
+        } */
+
+        /* indent 
+         em is a relative unit
+         text-indent can be negative value*/
+        /* p {
+            text-indent: 2em;
+        } */
+
+        /* .two {
+            line-height: 50px;
+        } */
+
+        /* height 可以用来垂直方向的文本居中, 行高和元素高度一样 */
+        /* div {
+            width: 500px;
+            height: 650px;
+            font-size: 20px;
+
+            background-color: green; */
+            /* background-color: transparent; */
+
+
+            /* 背景图会有平铺的效果 */
+            /* background-image: url(./cat.jpg); */
+            
+            /* 取消平铺 */
+            /* background-repeat: no-repeat; */
+            /* repeat x: 水平 repeat */
+            /* repeat y: 垂直 repeat */
+
+            /* 图片会覆盖背景色 */
+
+            /* 设置背景图的位置，x y(y-axis 向下增长) 
+               平面直角坐标系 */
+            /* background-position: 100px 100px; */
+
+            /* 图片设置成居中的位置 better option：% or use "center"*/
+            /* background-position: center center; */
+
+            /* 设置图片大小 */
+            /* background-size: 100px 100px; */
+
+            /* 背景图自动设置成背景大小 整个 div 填满，不会让元素露出背景色*/
+            /* background-size: cover;  */
+
+            /* 填充背景，可能会露出一部分背景色，图片拉伸为元素的大小就结束*/
+            /* background-size: contain; */
+            /* background 一系列属性，对图片的处理能力，要比 img 来得更加厉害    */
+
+            /* setting for words */
+            /* text-align: center;
+            line-height: 650px;
+            color: black;
+        } */
+
+        /* body {
+            background-color: rgb(60,60,60);
+        } */
+
+        /* div {
+            width: 200px;
+            height: 100px;
+            background-color: red;
+            color: white;
+            border-radius: 20px;
+        } */
+
+        /* 得到圆形 
+           正方形, radius设置成width的一半的数值，或者写成50%，比如说，表示头像*/
+        /* div {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            color: white;
+            border-radius: 50%; 
+        } */
+
+        /* 行内元素，用display: block，来切换成块级元素 
+           display: none, 来隐藏元素，但是DevTools中可以看见*/
+        /* a {
+            width: 500px;
+            height: 100px;
+            display: block;
+        } */
+
+        /* box model */
+        /* div {
+            width: 200px;
+            height: 100px;
+            border: 10px red solid;
+               box-sizing will not change the size of container. 
+               开发中常用,阻止盒子被撑大。
+            box-sizing: border-box;
+
+            padding: 5px;
+        } */
+
+        /* 外边距 margin 在垂直方向会存在 "塌陷"的情况。两个元素都设置的外边距，实际的外边距是两者的较大值，
+           而不是相加。水平方向不会出现，会直接相加。 */
+        /* .one {
+            margin-bottom: 10px;
+        }
+
+        .two {
+            margin-top: 15px;
+        } */
+
+        .one {
+            width: 500px;
+            height: 200px;
+            background-color: red;
+        }
+
+        .two {
+            width: 200px;
+            height: 100px;
+            background-color: green;
+            /* 上下外边距为0，左右外边距(水平方向)为auto，浏览器自动去适应 */
+            margin: 0 auto;
+        }
+        
+    </style>
+
+        <div class="one">
+            <div class="two">
+                hello
+            </div>
+        </div>
+
+        <!-- <div class="one">
+            这是一个元素
+        </div>
+
+        <div class="two">
+            这是一个元素
+        </div> -->
+
+    <!-- 是个文本，无法设置 width 和 height -->
+    <!-- <a href="#">这是一个链接</a>
+    <a href="#">这是一个链接</a>
+    <a href="#">这是一个链接</a> -->
+
+    <!-- <div>
+        这是一段话
+    </div>
+    <a href="#">This is hyperlink</a> -->
+
+    <!-- <p>这是一段很长的话。Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere commodi non eveniet, assumenda culpa eaque nesciunt debitis ratione, doloremque voluptas nihil voluptatum, quae sunt corrupti quis iure quam eos alias. Lor\
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero nostrum tenetur necessitatibus eligendi sunt cupiditate ratione totam accusantium possimus quo quidem ullam voluptatibus culpa commodi dolor, doloremque accusamus vitae soluta. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id molestiae est excepturi consequuntur eos commodi earum dicta nesciunt autem nisi! Perspiciatis assumenda debitis deleniti. Quas amet libero cumque veritatis numquam. lorm
+        
+    </p> -->
+
+    <!-- <div class="one">
+        上一行
+    </div>
+    <div class="two">
+        中间行
+    </div>
+    <div class="three">
+        下一行
+    </div> -->
+
+    <!-- <div>line-height的例子</div> -->
+
+</body>
+</html>
