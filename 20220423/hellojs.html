@@ -24,6 +24,24 @@
     <!-- <script src="app.js"></script> -->
 
     <script>
+
+        // splice, 用来删除元素
+        let arr = [1, 2, 3, 4, 5, 6];
+        arr.splice(2, 3); // from index 2, delete 3 elements
+        console.log(arr);
+
+        // splice, 针对数组中的某个区间，用来替换元素
+        let arr1 = [1, 2, 3, 4, 5, 6];
+        arr1.splice(2, 3, 100, 200, 300, 400);
+        console.log(arr1);
+
+        // push, add element to array
+        // let arr = [];
+        // for (let i = 0; i < 10; i++) {
+        //     arr.push(i);
+        // }
+        // console.log(arr);
+
         // 很少使用。similar to Java's new object
         // let arr = new Array(); 
 
@@ -47,18 +65,30 @@
         // console.log(arr5); // (4) [1, 2, 3, 4, -1: 10]. index -1是一个‘属性’(key value pair)，所以没有影响长度
         // console.log(arr5[-1]); // 10
         
-        let arr = [1,2,3,4];
-        // 类似map的性质 => 是个对象，在运行是，可以给对象新增属性
+        // let arr = [1,2,3,4];
+        
+        // 类似map的性质 => 是个对象，在运行是，可以给对象新增属性, 不能算成数组的长度
         // arr['hello'] = 10;
         // console.log(arr);
         // console.log(arr['hello']); 
 
         // 等价于上面的代码 
         // 动态类型的语言，都有这样的设定
-        arr.hello = 10;
-        console.log(arr);
-        console.log(arr['hello']); // hello是属性名
-        console.log(arr.hello);
+        // arr.hello = 10;
+        // console.log(arr);
+        // console.log(arr['hello']); // hello是属性名
+        // console.log(arr.hello);
+
+        // 获取数组长度 .length 
+        // console.log(arr); // [1,2,3,4]
+        // console.log(arr.length); // 4
+        // length 属性是可以更改的
+        // arr.length = 3;
+        // console.log(arr); // [1,2,3]
+        // console.log(arr.length); // 3
+        // undefined at index 4
+        // arr.length = 5;
+        // console.log(arr); // (5) [1, 2, 3, empty × 2]
 
         // operators
         // let a = 5;
