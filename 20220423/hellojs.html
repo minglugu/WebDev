@@ -24,14 +24,70 @@
     <!-- <script src="app.js"></script> -->
 
     <script>
-        let a = 10;
-        let b = '10';
+        // 很少使用。similar to Java's new object
+        // let arr = new Array(); 
+
+        // let arr1 = [];
+        // let arr = [1,2,3,4];
+        // let arr3 = [1, 'hello', null, undefined, true, [2,3]];
+        // console.log(arr1);
+        // console.log(arr2);
+        // console.log(arr3);
+
+        // if out of index, value will be undefined
+        // let arr4 = [1,2,3,4];
+        // console.log(arr4[-1]);
+        // console.log(arr4[100]);
+
+        // arr4[100] = 100;
+        // console.log(arr4); // (length is 101) [1, 2, 3, 4, empty × 96, 100]. empty × 96 is undefined.
+
+        // let arr5 = [1,2,3,4];
+        // arr5[-1] = 10;
+        // console.log(arr5); // (4) [1, 2, 3, 4, -1: 10]. index -1是一个‘属性’(key value pair)，所以没有影响长度
+        // console.log(arr5[-1]); // 10
+        
+        let arr = [1,2,3,4];
+        // 类似map的性质 => 是个对象，在运行是，可以给对象新增属性
+        // arr['hello'] = 10;
+        // console.log(arr);
+        // console.log(arr['hello']); 
+
+        // 等价于上面的代码 
+        // 动态类型的语言，都有这样的设定
+        arr.hello = 10;
+        console.log(arr);
+        console.log(arr['hello']); // hello是属性名
+        console.log(arr.hello);
+
+        // operators
+        // let a = 5;
+        // let b = 6;
+        // let c = NaN;
+        // console.log(a || b); // take a's value, print 5
+        // console.log(c || b); // take b's value, print 6
+        // console.log(a && b); // take b's value, print 6
+        // console.log(c && b); // take c's value, print NaN
+
+        // console.log(1 / 2); // 0.5
+
+        // let x = null;
+        // console.log(!x);
+        // !x will return true for every "falsy" value (empty string, 0, null, false, undefined, NaN)
+        // if (!x) {
+        //     x = 0;
+        // }
+        // 以上三行代码等价于：
+        // x = x || 0; 
+
+        // let a = 10;
+        // let b = '10';
 
         // == != 只比较两个变量的值，不比较两个变量的类型。会做类型转换
-        console.log(a == b); // true
+        // console.log(a == b); // true
 
         // === !== 同时比较两个变量的值和类型
-        console.log(a === b); // false
+        // console.log(a === b); // false
 
         // 未定义的情况(非法情况)
         // let anumber;
