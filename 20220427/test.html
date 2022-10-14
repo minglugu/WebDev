@@ -7,21 +7,34 @@
     <title>Document</title>
 </head>
 <body>
-    <img src="rose.jpg" alt="rose">
+    <!-- <img src="rose.jpg" alt="rose"> -->
+
+    <input type="button" value="播放">
+    
 
     <script>
-        // 图片切换的效果
-        let img = document.querySelector('img');
-        img.onclick = function() {
-            // console.log(img.src);
-            // 打印出一个 dom 对象的全部属性和值
-            console.dir(img);
-            if (img.src.indexOf('rose.jpg') >= 0) {
-                img.src = 'cat.jpg';
-            } else if (img.src.indexOf('cat.jpg') >= 0) {
-                img.src = 'rose.jpg';
-            }
+        // 播放的文本切换
+        let input = document.querySelector('input');
+        input.onclick = function() {
+            if (input.value == '播放') {
+                input.value = '暂停';
+            } else if (input.value == '暂停') {
+                input.value = '播放';
+            } 
         }
+
+        // 图片切换的效果
+        // let img = document.querySelector('img');
+        // img.onclick = function() {
+        //     // console.log(img.src);
+        //     // 打印出一个 dom 对象的全部属性和值
+        //     console.dir(img);
+        //     if (img.src.indexOf('rose.jpg') >= 0) {
+        //         img.src = 'cat.jpg';
+        //     } else if (img.src.indexOf('cat.jpg') >= 0) {
+        //         img.src = 'rose.jpg';
+        //     }
+        // }
     </script>
 </body>
 </html>

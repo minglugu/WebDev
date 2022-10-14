@@ -1,5 +1,6 @@
 1.  HTML 标签里的属性，可以通过JS中的DOM对象来获取到一样的属性 
     对象名.属性
+    e.g. input.value
 
 2.  DOM 对象一共有多少个属性
     用 console.dir 这个方法，打印出一个 dom 对象的全部属性和值
