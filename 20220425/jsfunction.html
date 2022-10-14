@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Function</title>
+</head>
+<body>
+    <script>
+        
+
+        // scope, global and local. JS ES6 version
+        // let: 块级作用域，block scope within {}
+        // { }内部的代码，可以访问到{ }外面的代码
+        // 并支持无限套娃:JS中的作用域，是支持‘逐级向上’查找的，找到了全局作用域 num。
+        // 作用域链 scope chain
+        // 在作用域不同节点上，存在多个同名的变量，那么优先找到最近的
+        // let num = 10;
+        // function hi2() {
+        //     let num = 20;
+        //     function hi(){
+        //         console.log(num);
+        //     }
+        //     hi();
+        // }
+        // hi2();
+
+        // 定义函数
+        // function hello() {
+        //     console.log('hello');
+        // }
+
+        // let f = hello; // 给 f 赋值。f是function类型的变量。hello是一个函数名，没有（），不是函数调用。这里只是一个单纯的函数赋值
+        // console.log(typeof f);
+        // console.log(f);
+
+        // 以上定义函数和给函数赋值，是可以写在一起的
+        // let f = function hello() {
+        //     console.log('hello');
+        // }
+
+        // 定义的是没有名字的函数(匿名函数，或 lambda 表达式)，赋值给f2，用f2来调用
+        // 实际开发中，比较常用的函数表达式的形式
+        // let f1 = function() {
+        //     console.log('hello1');
+        // }
+
+        // 通过 f 也能够调用到上面的 hello 函数
+        // f1();
+
+        // 支持多个变量的相加，变量数目小于等于7
+        // typeof 来判断参数的类型
+        // function add(a, b, c, d, e, f, g) {
+        //     // if (a === undefined) {
+        //     //     a = 0;
+        //     // }
+        //     a = a || 0;
+        //     b = b || 0;
+        //     c = c || 0;
+        //     d = d || 0;
+        //     e = e || 0;
+        //     f = f || 0;
+        //     g = g || 0;
+        //     return  a + b + c + d + e + f + g; 
+        // }
+       // 最多支持 7 个参数的相加
+    //    function add(a, b, c, d, e, f, g) {
+    //         return a + b + c + d + e + f + g; 
+    //    }
+    //    // 后面的没有用到的变量，是undefined
+    //    console.log(add(1 + 2)); // NaN
+    //    console.log(add(1 + 2 + 3)); // NaN
+    //    console.log(add(1 + 2 + 3 + 4)); // NaN
+
+        // // 参数不用定义类型，因为是动态的
+        // function add(x, y) {
+        //     return x + y;
+        // }
+
+        // // 传入的参数是可以任意的，只要支持函数内部的逻辑。
+        // let result = add(1, 2);
+        // console.log(result);
+
+        // result = add('hello ', 'world');
+        // console.log(result);
+
+        // result = add('hello', 10);
+        // console.log(result);
+
+        // // 定义函数，先写调用函数，再写函数，也可以。
+        // function hello() {
+        //     console.log('hello');
+        // }
+
+        // // 调用函数以后，才会打印
+        // hello();
+    </script>
+</body>
+</html>
