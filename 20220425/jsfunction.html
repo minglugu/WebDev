@@ -7,8 +7,164 @@
     <title>JS Function</title>
 </head>
 <body>
+    
+
+    <!-- 1. 事件源 -->
+    <!-- <button onclick="f()">请点击按钮</button> -->
+
+    <!-- 建议这么写，将样式，结构和行为分开写 -->
+    <!-- <button>这是一个按钮</button> -->
+
+    <!-- <div class="one">
+        hello 
+    </div>
+
+    <div id="two">
+        hello two
+    </div>
+
+    <ul>
+        <li>aaa</li>
+        <li>bbb</li>
+        <li>ccc</li>
+        <li>sss</li>
+        <li>rrr</li>
+
+    </ul> -->
+
+    <!-- innerHTML的演示 -->
+    <!-- <div id="screen">
+        <ul>
+            <li>aaa</li>
+            <li>aaa</li>
+            <li>aaa</li>
+    </ul>
+    </div>
+    <button id="btn">这是获取内容的按钮</button>
+    <button id="btn2">这是修改内容的按钮</button> -->
+
+    <!-- <div id="screen">0</div>
+    <button id="plus">+</button> -->
+
+    <!-- input 是单标签，所以用value属性，来获取内部的内容-->
+    <!-- <input type="text" id="screen" value="0">
+    <button id="plus">+</button> -->
+    
+    
     <script>
+
+
+        // let plusButton = document.querySelector('#plus');
+        // plusButton.onclick = function() {
+        //     // 1. 获取到screen里面的值。
+        //     let screen = document.querySelector('#screen');
+        //     // let val = screen.innerHTML; // 字符串类型 
+        //     let val = screen.value;
+        //     val = parseInt(val);
+        //     console.log(typeof(val));
+        //     // 2. 把这个值 +1
+        //     val++;
+        //     // 3. 新的值写回screen里面
+        //     screen.value = val;
+        // }
+
+        // let plusButton = document.querySelector('#plus');
+        // plusButton.onclick = function() {
+        //     // 1. 获取到screen里面的值。
+        //     let screen = document.querySelector('#screen');
+        //     let val = screen.innerHTML; // 字符串类型 
+        //     val = parseInt(val);
+        //     // 2. 把这个值 +1
+        //     val++;
+        //     // 3. 新的值写回screen里面
+        //     screen.innerHTML = val;
+        // }
+
+        // 操作元素的内容
+        // 通过对象里面的一个属性 innerHTML 来实现（元素里面包含的 html 代码是啥样的）
+        // let button = document.querySelector('#btn');
+        // button.onclick = function() {
+        //     let screen = document.querySelector('#screen');
+        //     // 获取元素的内容
+        //     console.log(screen.innerHTML); // get the content whose id is screen
+        //     // console.log(screen.innerHTML = 'hello, JS');
+        // }
+
+        // let button2 = document.querySelector('#btn2');
+        // button2.onclick = function() {
+        //     let screen = document.querySelector('#screen');
+        //     screen.innerHTML = '<h1>这是修改后的内容</h1>';
+        // }
+
+        // 也可以这么写，但是要在html的button标签里面，这么写
+        // <button onclick="f()">请点击俺按钮</button>
+        // function f() {
+        //     alert('hello');
+        // }
+
+        // let button = document.querySelector('button');
+        // // 函数表达式：匿名函数赋值给onclick的属性
+        // // 2. 事件类型。此处的function是回调函数
+        // button.onclick = function() {
+        //     // 事件的处理程序
+        //     alert('hello');
+        // }
+
+        // JS 事件 event
+        // 1. 事件源：哪个HTML 元素产生的事件
+        // 2. 事件类型：鼠标点击，移动，窗口大小
+        // 3. 事件的处理程序：当事件产生之后，执行啥样的js代码
+
+
+        // 参数就是 css 的选择器
+        // let div = document.querySelector('.one');
+        // console.log(div);
+
+        // let obj = document.querySelector('#two');
+        // console.log(obj);
+
+        // 后代选择器, 有多个 li 元素的时候，只会选中第一个
+        // let obj1 = document.querySelector('ul li');
+        // console.log(obj1);
+
+        // 全部选中，用querySelectorAll,返回的是数组
+        // 拿到的是对象
+        // let objAll = document.querySelectorAll('ul li');
+        // console.log(objAll);
+
+        // DOM API：浏览器给 JS 提供的原生接口，不方便
+        // 第三方API/frame: jQuery
+        // Vue, React 等前端框架，还是对DOM的封装
         
+
+        // 构造函数，是一种特殊的函数，批量创建出一组类似的对象
+        // 函数内部用 this. 这样的方式来创建属性的时候。
+        // function student() {
+
+        // }
+
+        // 这种写法为主
+        // JS 中的对象，都是object
+        // student object, {} 表示对象，键值对之间，用，分割；键和值之间，用：分割。
+        // object.属性名
+        // let student = {
+        //     name: 'Cai',
+        //     age: 20,
+        //     height: 180,
+        //     weight: 120,
+
+        //     sing: function() {
+        //         console.log('Ji, nitaimei!');
+        //     },
+
+        //     jump: function() {
+        //         console.log('一段舞蹈');
+        //     }
+        // }
+        // console.log(student.name); 
+        // console.log(student.age);
+        // student.sing();
+
 
         // scope, global and local. JS ES6 version
         // let: 块级作用域，block scope within {}
