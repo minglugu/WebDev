@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="rose.jpg" alt="rose">
+
+    <script>
+        // 图片切换的效果
+        let img = document.querySelector('img');
+        img.onclick = function() {
+            // console.log(img.src);
+            // 打印出一个 dom 对象的全部属性和值
+            console.dir(img);
+            if (img.src.indexOf('rose.jpg') >= 0) {
+                img.src = 'cat.jpg';
+            } else if (img.src.indexOf('cat.jpg') >= 0) {
+                img.src = 'rose.jpg';
+            }
+        }
+    </script>
+</body>
+</html>
