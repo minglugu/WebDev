@@ -11,49 +11,95 @@
 
     <!-- <input type="button" value="播放"> -->
     
-    <input type="checkbox" id="all"> 我全都要 <br>
+    <!-- <input type="checkbox" id="all"> 我全都要 <br>
     <input type="checkbox" class="girl"> 貂蝉 <br>
     <input type="checkbox" class="girl"> 小乔 <br>
     <input type="checkbox" class="girl"> 妲己 <br>
-    <input type="checkbox" class="girl"> 飞燕 <br>
+    <input type="checkbox" class="girl"> 飞燕 <br> -->
+
+    <!-- css 用 - 命名 -->
+    <!-- <div style="font-size:20px">这是一个文本</div> -->
+
+    <style>
+        .light {
+            background-color: #fff;
+            color: black
+        }
+
+        .dark {
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+
+    <div class="light">这是一段话</div>
+    <button>关灯</button>
 
     <script>
+        // 借助 CSS 类来修改样式
+        // 夜间和白天模式
+        let div = document.querySelector('div');
+        let button = document.querySelector('button');
+        button.onclick = function() {
+            //在 JS 里，属性名变成了 className/classList
+            if (div.className == 'light') {
+                div.className = 'dark';
+                button.innerHTML = '开灯';
+            } else if (div.className == 'dark') {
+                div.className = 'light';
+                button.innerHTML = '关灯';
+            }
+                
+        }
+
+        //点击放大字体
+        // let div = document.querySelector('div');
+        // div.onclick = function() {
+        //     // 1. 先获取到当前字体的大小，JS不支持 - 作为变量名，用camel case
+        //     // fontSize得到的是字符串，想要增加size，需要加上整数，用 parseInt 
+        //     console.log(parseInt(div.style.fontSize));
+        //     let fontSize = parseInt(div.style.fontSize)
+        //     // 2. 在当前字符大小的基础上，每点击一次，增加5个px
+        //     fontSize += 5;
+        //     // 修改属性值(e.g. fontSize)的时候，要注意使用正确单位
+        //     div.style.fontSize = fontSize + 'px';
+        // }
+
         // 全选/取消全选按钮
         // 主要用到input 的 checked 的属性
         // 1. 先获取到元素
-        let all = document.querySelector('#all');
-        let girls = document.querySelectorAll('.girl'); // girls 是数组
+        // let all = document.querySelector('#all');
+        // let girls = document.querySelectorAll('.girl'); // girls 是数组
 
-        // 2. 给 all 注册点击事件
-        all.onclick = function() {
-            for (let i = 0; i < girls.length; i++) {
-                // all.checked 就是 all 这个复选框的选中状态.如果 all 选中, checked 的值是 checked.
-                // 如果 all 没有选中, checked 是空的字符串
-                girls[i].checked = all.checked;
-            }
-        }
+        // // 2. 给 all 注册点击事件
+        // all.onclick = function() {
+        //     for (let i = 0; i < girls.length; i++) {
+        //         // all.checked 就是 all 这个复选框的选中状态.如果 all 选中, checked 的值是 checked.
+        //         // 如果 all 没有选中, checked 是空的字符串
+        //         girls[i].checked = all.checked;
+        //     }
+        // }
 
-        // 3. 针对每个 girl 注册点击事件,实现对于 all 的取消操作.
-        for (let i = 0; i < girls.length; i++) {
-                girls[i].onclick = function() {
-                    // 有一个没被选中, 直接取消
-                    all.checked = checkGirls(girls); 
-                }
-        }
+        // // 3. 针对每个 girl 注册点击事件,实现对于 all 的取消操作.
+        // for (let i = 0; i < girls.length; i++) {
+        //         girls[i].onclick = function() {
+        //             // 有一个没被选中, 直接取消
+        //             all.checked = checkGirls(girls); 
+        //         }
+        // }
 
-        function checkGirls(girls) {
-            // 判定是不是所有的 girl 都被选中了.
-            for (let i = 0; i < girls.length; i++) {
-                if(!girls[i].checked) {
-                    // 只有一个妹子没被选中,就让 all 是未选中状态
-                    return '';
-                }
-            }
-            // 遍历了一圈,所有的妹子都被选中了,就让 all 也是选中状态.
-            return 'checked';
-        }
+        // function checkGirls(girls) {
+        //     // 判定是不是所有的 girl 都被选中了.
+        //     for (let i = 0; i < girls.length; i++) {
+        //         if(!girls[i].checked) {
+        //             // 只有一个妹子没被选中,就让 all 是未选中状态
+        //             return '';
+        //         }
+        //     }
+        //     // 遍历了一圈,所有的妹子都被选中了,就让 all 也是选中状态.
+        //     return 'checked';
+        // }
         
-
         // 播放的文本切换. input use value,因为是单独存在
         // let input = document.querySelector('input');
         // input.onclick = function() {
