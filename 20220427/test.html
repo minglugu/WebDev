@@ -32,36 +32,41 @@
         } */
     </style>
 
-    <div class="container"></div>
-
-    <button>删除 div</button>
+    <!-- <div class="container"></div>
+    <button>删除 div</button> -->
 
     <!-- <div class="light" style="height: 60px;">这是一段话</div>
     <button>关灯</button> -->
 
+    
+
     <script>
-        // 1. 创建一个新的 html 标签，名字为 div. 此处的节点，没有挂在 DOM 树上，浏览器页面中，没有显示
-        let newDiv = document.createElement('div');
-        // 设置 newDiv 的属性
-        newDiv.id = 'newDiv';
-        // CSS 类名
-        newDiv.className = 'one';
-        newDiv.innerHTML = 'hello';
-        console.log(newDiv); // <div id="newDiv" class="one">hello</div>
+        // 猜数字游戏
 
-        // 2. appendChild 把节点插入到某个节点的子元素中, 此时的 container 里面，包含了 newDiv
-        let container = document.querySelector('.container');
-        container.appendChild(newDiv);
 
-        // 2a. 删除节点 newDiv
-        let button = document.querySelector('button');
-        button.onclick = function() {
-            container.removeChild(newDiv);
-        }
         // 针对节点操作，新增，删除，移动节点的操作
         // 新增节点：1. 创建 2. 把节点挂在 DOM 树上
+        // 还有其它新增和删除的方法
 
+        // 1. 创建一个新的 html 标签，名字为 div. 此处的节点，没有挂在 DOM 树上，浏览器页面中，没有显示
+        // let newDiv = document.createElement('div');
+        // // 设置 newDiv 的属性
+        // newDiv.id = 'newDiv';
+        // // CSS 类名
+        // newDiv.className = 'one';
+        // newDiv.innerHTML = 'hello';
+        // console.log(newDiv); // <div id="newDiv" class="one">hello</div>
 
+        // // 2. appendChild 把节点插入到某个节点的子元素中, 此时的 container 里面，包含了 newDiv
+        // let container = document.querySelector('.container');
+        // container.appendChild(newDiv);
+
+        // // 2a. 删除节点 newDiv
+        // let button = document.querySelector('button');
+        // button.onclick = function() {
+        //     container.removeChild(newDiv);
+        // }
+        
         // 元素操作，针对元素的属性，元素本身没有发生改变
         // 借助 CSS 类, className 来修改样式
         // 夜间和白天模式
