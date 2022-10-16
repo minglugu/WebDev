@@ -34,6 +34,8 @@
 
     <div class="container"></div>
 
+    <button>删除 div</button>
+
     <!-- <div class="light" style="height: 60px;">这是一段话</div>
     <button>关灯</button> -->
 
@@ -50,7 +52,12 @@
         // 2. appendChild 把节点插入到某个节点的子元素中, 此时的 container 里面，包含了 newDiv
         let container = document.querySelector('.container');
         container.appendChild(newDiv);
-         
+
+        // 2a. 删除节点 newDiv
+        let button = document.querySelector('button');
+        button.onclick = function() {
+            container.removeChild(newDiv);
+        }
         // 针对节点操作，新增，删除，移动节点的操作
         // 新增节点：1. 创建 2. 把节点挂在 DOM 树上
 
