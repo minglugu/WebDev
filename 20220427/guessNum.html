@@ -47,15 +47,15 @@
             // 3. 更新猜的次数
             let guessCount = parseInt(guessCountSpan.innerHTML);
             guessCountSpan.innerHTML = guessCount + 1;
+        }
 
-            // 4. 实现 reset 操作的逻辑：开始新游戏
-            resetBtn.onclick = function() {
-                // 让页面刷新即可
-                // location 是和 document 并列关系的对象。location 是操作页面的链接/地址
-                // 通过reload(), 就可以设置为初始值
-                // document 是操作页面的内容 
-                location.reload();
-            }
+        // 4. 实现 reset 操作的逻辑：开始新游戏
+        resetBtn.onclick = function() {
+            // 让页面刷新即可
+            // location 是和 document 并列关系的对象。location 是操作页面的链接/地址
+            // 通过reload(), 就可以设置为初始值
+            // document 是操作页面的内容 
+            location.reload();
         }
 
     </script>
