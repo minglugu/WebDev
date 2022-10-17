@@ -1,0 +1,39 @@
+/* 和博客列表页相关的样式 .right */
+.blog {
+    width: 100%;
+    /* 如果不设置高度，就取决于里面的内容高度的综合 */
+
+    padding: 20px;
+}
+.blog .title {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 10px 0;
+}
+
+.blog .date {
+    text-align: center;
+    color: rgb(29, 113, 29);
+    padding: 10px 0;
+    font-weight: bold;
+
+}
+
+.blog .desc {
+    text-indent: 2em;
+}
+
+.blog a {
+    /* 设置成块级元素，方便设置尺寸和边框 */
+    display: block;
+    width: 150px;
+    height: 40px;
+    margin: 0 auto;
+    border: 2px solid gray;
+    
+    color: black;
+}
+.container .right {
+
+}
