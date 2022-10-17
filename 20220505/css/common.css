@@ -120,8 +120,7 @@ body {
 
 .card .counter {
     /* 弹性布局 */
-    display: block;
+    display: flex;
     justify-content: space-around;
     padding: 6px;
-    text-align: center;
 }
