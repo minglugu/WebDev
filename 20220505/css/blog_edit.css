@@ -1,0 +1,26 @@
+/* 博客编辑页 CSS 样式 */
+
+.blog-edit-container {
+    width: 1000px;
+    height: calc(100% - 50px);
+    margin: 0 auto;
+}
+
+.blog-edit-container .title {
+    width: 100%;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.blog-edit-container .title input {
+    width: 895px;
+    height: 40px;
+}
+
+.blog-edit-container .title button {
+    width: 100px;
+    height: 40px;
+}
