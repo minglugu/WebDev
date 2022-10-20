@@ -18,9 +18,26 @@
 .blog-edit-container .title input {
     width: 895px;
     height: 40px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 22px;
+    line-height: 40px;
+    padding-left: 10px;
+
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 .blog-edit-container .title button {
     width: 100px;
     height: 40px;
+    border-radius: 10px;
+    color: white;
+    background-color: rgb(15, 15, 76);
+    border: none;
+    outline: none;
+}
+
+.blog-edit-container .title button:active {
+    background-color: #666;
 }
