@@ -8,13 +8,32 @@
 </head>
 <body>
     <!-- get 的 query string 是 username=zhangsan&password=123 -->
-    <form action="https://www.sougou.com/index.html" method="get">
-        <!-- name 这个属性和样式无关。 form 表单给服务器提交的数据，本质上是键值对。
+    <!-- name 这个属性和样式无关。 form 表单给服务器提交的数据，本质上是键值对。
              此处的 name 属性，就是描述当前输入框对应的 key 是什么？
-             此处 key 就是 username，value 就是用户在输入框 输入的内容-->
-        <input type="text" name="username">
+             此处 key 就是 username，value 就是用户在输入框 输入的内容-->    
+    <!-- <form action="https://www.sougou.com/index.html" method="get">
+        <input type="text" name="username"> -->
         <!-- key 是 password，value 是用户输入框 输入的内容 -->
-        <input type="password" name="password">
-    </form>
+        <!-- <input type="password" name="password">
+    </form> -->
+
+    <script src="jquery.js"></script>
+    <script>
+        // 通过 $ 对象来调用 ajax 函数。参数只有一个，是对象
+        $.ajax({
+            type: 'get', // method
+            url: 'http://www.sougou.com/index.html',
+            success: function(body) {
+                // success  对应一个回调函数。这个函数会在正确获取到 HTTP 响应之后来调用。
+                // '异步'
+                // 回调函数的参数，就是 HTTP 响应的 body 部分
+                console.log('获取到响应数据！' + body);
+            },
+            error: function() {
+                // error 也对应一个回调函数。这个函数会在请求失败之后触发（4xx, 5xx status code）
+                console.log('获取响应失败！');
+            }
+        });
+    </script>
 </body>
 </html>

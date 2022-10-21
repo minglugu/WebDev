@@ -21,7 +21,7 @@
     border-radius: 10px;
     border: none;
     outline: none;
-    font-size: 22px;
+    font-size: 18px;
     line-height: 40px;
     padding-left: 10px;
 
@@ -40,4 +40,11 @@
 
 .blog-edit-container .title button:active {
     background-color: #666;
+}
+
+#editor {
+    border-radius: 10px;
+    
+    /* 找到 markdown 里面的子元素 用opacity设置半透明 */
+    opacity: 80%;
 }
