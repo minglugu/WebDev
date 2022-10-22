@@ -17,7 +17,7 @@ public class HelloServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // 这个代码一定要comment掉，不能调用父类的doGet()
-        // super.doGet(req, resp);
+        super.doGet(req, resp);
         // 这个是服务器在控制台里面打印
         System.out.println("hello world!");
 

@@ -20,3 +20,13 @@
     3. 找到apache-tomcat-8.5.83\webapps文件夹，在该目录下，新建一个项目文件夹，来存放项目相关的文件并保存。
     4. 在浏览器里输入项目相关的url链接，就可以在本地机器上面浏览了。例如：http://127.0.0.1:8080/blog102/blog_edit.html
 
+5.  When do browsers send GET request?
+    - 直接在地址栏里，输入URL
+    - 通过 a 标签跳转
+    - 通过img/link/script标签，也会触发 get 请求
+    - 通过 form 表单，method 指定为 GET
+    - 通过Ajax，type 指定为 GET
+
+    啥时候浏览器发的是 POST 请求？
+    - 通过 form 表单，method 指定为 POST
+    - 通过Ajax，type 指定为 POST
