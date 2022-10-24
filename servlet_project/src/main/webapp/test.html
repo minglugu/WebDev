@@ -7,11 +7,37 @@
     <title>Document</title>
 </head>
 <body>
-    <!-- 构造 JSON 格式的请求，需要用 ajax 了   -->
+    <!-- 构造 JSON 格式的请求，需要用 ajax 了   
+        post 方法3.-->
         <input type="text" id="userId">
         <input type="text" id="classId">
         <input type="button" value="提交" id="submit">
 
+    <!-- 要想构造一个 JSON 格式的请求，就不再使用 form 而是使用 ajax 了 -->
+        <script>
+            // 拿到 2 个 input 标签
+            let userIdInput = document.querySelector('#userId');
+            let classIdInput = document.querySelector('#classId');
+            let button = document.querySelector('#submit');
+            // 转化成 JSON 格式的字符串，e.g.：{"userId":"dfd","classId":"111"}
+            button.onclick = function() {
+                $.ajax({
+                    type: 'post',
+                    url: 'postJson',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        userId: userIdInput.value,
+                        classId: classIdInput.value
+                    }),
+                    success: function(body) {
+                        console.log(body);
+                    }
+                });
+            }
+
+        </script>
+        
+    <!-- post 方法2. -->
     <!-- form 表单，来获取 post method 的参数. 
          action 里是 postGetParameterServlet 类里面的路径（@WebServlet("/postGetParameter")）
          action 里面的内容是需要 post 的路径名，没有  /， 此处的路径是相对路径。-->
@@ -23,6 +49,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script>
+        // // post 方法1. 用 doPost() 写，见methodServlet class
         // $.ajax({
         //     type: 'post',
         //     url: 'method',
