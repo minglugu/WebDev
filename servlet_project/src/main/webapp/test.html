@@ -7,15 +7,29 @@
     <title>Document</title>
 </head>
 <body>
+    <!-- 构造 JSON 格式的请求，需要用 ajax 了   -->
+        <input type="text" id="userId">
+        <input type="text" id="classId">
+        <input type="button" value="提交" id="submit">
+
+    <!-- form 表单，来获取 post method 的参数. 
+         action 里是 postGetParameterServlet 类里面的路径（@WebServlet("/postGetParameter")）
+         action 里面的内容是需要 post 的路径名，没有  /， 此处的路径是相对路径。-->
+<!--    <form action="postGetParameter" method="post">-->
+<!--        <input type="text" name="userId">-->
+<!--        <input type="text" name="classId">-->
+<!--        <input type="submit" value="提交">-->
+<!--    </form>-->
+
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script>
-        $.ajax({
-            type: 'post',
-            url: 'method',
-            success: function(body) {
-                console.log(body);
-            }
-        });
+        // $.ajax({
+        //     type: 'post',
+        //     url: 'method',
+        //     success: function(body) {
+        //         console.log(body);
+        //     }
+        // });
     </script>
 </body>
 </html>
