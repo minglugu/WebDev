@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/getParameter")
-public class getParameterServlet extends HttpServlet {
+public class GetParameterServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // 浏览器传来一个形如这样的请求：/getParameter?userId=123&classId=456

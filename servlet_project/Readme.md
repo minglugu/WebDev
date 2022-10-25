@@ -30,3 +30,62 @@
     啥时候浏览器发的是 POST 请求？
     - 通过 form 表单，method 指定为 POST
     - 通过Ajax，type 指定为 POST
+    
+6.  POST 请求 body 格式
+    1. x-www-form-urlencoded (常见): getParameter
+       如何在前端构造一个这样的格式请求？
+       1) form 表单
+          - 输入127.0.0.1:8080/hello102/test.html
+          - 页面会跳转
+           
+          POST http://127.0.0.1:8080/hello102/postGetParameter HTTP/1.1
+          Host: 127.0.0.1:8080
+          Connection: keep-alive
+          Content-Length: 22
+          Cache-Control: max-age=0
+          sec-ch-ua: "Chromium";v="106", "Google Chrome";v="106", "Not;A=Brand";v="99"
+          sec-ch-ua-mobile: ?0
+          sec-ch-ua-platform: "Windows"
+          Upgrade-Insecure-Requests: 1
+          Origin: http://127.0.0.1:8080
+          Content-Type: application/x-www-form-urlencoded
+          User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36
+          Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+          Sec-Fetch-Site: same-origin
+          Sec-Fetch-Mode: navigate
+          Sec-Fetch-User: ?1
+          Sec-Fetch-Dest: document
+          Referer: http://127.0.0.1:8080/hello102/test.html
+          Accept-Encoding: gzip, deflate, br
+          Accept-Language: en-US,en;q=0.9
+
+          userId=dfd&classId=111
+          
+       2) postman
+        
+    2. form-data
+    3. JSON (常见)
+       因为JSON里面的字段是能够嵌套的，所以手动解析的话，不容易。但是可以借助第三方库，来直接处理 JSON 格式数据。
+       课堂上，主要用的库是Jackson（Spring官方推荐的）
+       JSON 的请求方式。
+       {
+        userId:dfd,
+        classId: 111
+        }
+       通过Maven, 把 Jackson 引入
+       button.onclick = function() {
+            $.ajax({
+                type: 'post',
+                url: 'postGetParameter2',
+                // 对于 POST 这样的请求，ajax 就允许使用 data 属性来构造请求的 body 部分
+                data: JSON.stringify({   
+                    // 此处要构造的内容，是个JS对象，需要把JS对象，通过JSON.stringfy,转成一个字符串。该字符串的格式就是JSON的格式        
+                    userId: userIdInput.value,
+                    classId: classIdInput.value
+                }),
+                success: function(body) {
+                console.log(body);
+                }
+            });
+        }
+       使用 ajax 的方式来提交数据，这个操作默认不会产生页面跳转。form会跳转。
