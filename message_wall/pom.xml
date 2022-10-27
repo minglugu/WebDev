@@ -29,6 +29,15 @@
             <version>2.12.6.1</version>
         </dependency>
 
+        <!-- 引入 mysql 驱动包 -->
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.47</version>
+        </dependency>
+
+
     </dependencies>
 
 </project>
