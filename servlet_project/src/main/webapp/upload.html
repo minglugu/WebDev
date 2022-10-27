@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>上传文件到服务器</title>
+</head>
+<body>
+    <!-- enctype="multipart/form-data" 指定这个特殊的类 -->
+    <form action="upload" method="post" enctype="multipart/form-data">
+        <!-- type 为file的话,页面上会带有一个 "选择按钮" 选择本地文件 -->
+        <input type="file" name="MyImage">
+        <input type="submit" value="提交">
+    </form>
+</body>
+</html>
