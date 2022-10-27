@@ -1,0 +1,25 @@
+/* 博客详情页的样式 */
+
+.blog-content {
+    /* 设置边距 */
+    padding: 30px;
+}
+.blog-content h3 {
+    text-align: center;
+    padding: 20px 0;
+    font-weight: bold;
+}
+
+.blog-content .date {
+    text-align: center;
+    color: rgb(29, 113, 29);
+    padding: 10px 0;
+    font-weight: bold;
+}
+
+.blog-content p {
+    /* em和字体相关。e.g. 当前字体是 14px，2em = 28px, 0.5e = 7px */
+    text-indent: 2em;
+    padding: 10px 0;
+}
+

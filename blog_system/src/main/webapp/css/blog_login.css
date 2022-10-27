@@ -1,0 +1,76 @@
+/* 登录页面的 CSS 样式 */
+
+.login-container {
+    width: 100%;
+    /* 50px is the height of navigation bar */
+    height: calc(100% - 50px);
+
+    /* 需要让里面的子元素，垂直水平居中，需要用到 flex 布局 */
+    display: flex;
+    /* 水平居中 */
+    justify-content: center;
+    /* 垂直居中 */
+    align-items: center;
+}
+
+.login-dialog {
+    width: 400px;
+    height: 350px;
+
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+}
+
+.login-dialog h3 {
+    padding: 35px 0;
+    text-align: center;
+    font-size: 30px;
+}
+
+.login-dialog .row {
+    height: 50px;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-dialog .row span {
+    /* 把 span 转换成块级元素，方便设置后续尺寸 */
+    display: block;
+    width: 100px;
+    font-weight: 700;
+}
+
+#username, #password {
+    width: 200px;
+    height: 40px;
+    font-size: 22px;
+    /* 保证文字垂直居中 */
+    line-height: 40px;
+    /* 不顶格写 */
+    padding-left: 10px;
+    border-radius: 10px;
+    /* 去掉边框 */
+    border: none;
+    /* 去掉轮廓线 */
+    outline: none;
+}
+
+.row button {
+    width: 300px;
+    height: 50px;
+    border-radius: 10px;
+
+    color: white;
+    border: none;
+    outline: none;
+    background-color: rgb(19, 19, 109);
+    margin-top: 10px;
+}
+
+.row button:active {
+    background-color: rgb(164, 214, 234);
+    color: black;
+}
