@@ -43,40 +43,45 @@
         <div class="right">
             <!-- 这个 div 来包裹整个博客的内容详情 -->
             <div class="blog-content">
+                <!-- 一下内容(标题，博客发布时间以及正文内容，都用JS来动态实现) -->
                 <!-- blog title -->
-                <h3>My first blog</h3>
+                <h3></h3>
                 <!-- 博客时间 -->
-                <div class="date">2022-05-05</div>
-                <!-- 正文 -->
-                <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque cum eum dolore eligendi voluptatum enim aperiam sequi nihil? Sed, quaerat? Quaerat reiciendis eaque harum? Consequatur, dolore dolorem. Quidem, officia quod!
-                </p>
-                <p>
-                    This is the first blog about JS. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet quisquam, quas debitis optio, eius et ab omnis explicabo sapiente similique deserunt ducimus, harum illum ad! Eveniet velit esse iusto sequi! Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint earum quibusdam aperiam eligendi laborum velit quidem? Dolorum, ipsa nobis eum tempore aliquid, animi culpa ex vel quibusdam dicta saepe officia! Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius corrupti maxime doloremque, provident rem in nihil impedit libero repellendus. Distinctio ipsam doloribus voluptatibus iste, dolorem animi nostrum necessitatibus voluptas molestiae. 
-                </p>
-                <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime quis nostrum expedita temporibus animi alias deleniti quo, est vero quod, deserunt sequi quisquam cupiditate excepturi. Enim alias nostrum odio architecto.
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque cum eum dolore eligendi voluptatum enim aperiam sequi nihil? Sed, quaerat? Quaerat reiciendis eaque harum? Consequatur, dolore dolorem. Quidem, officia quod!
-                </p>
-                <p>
-                    This is the first blog about JS. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet quisquam, quas debitis optio, eius et ab omnis explicabo sapiente similique deserunt ducimus, harum illum ad! Eveniet velit esse iusto sequi! Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint earum quibusdam aperiam eligendi laborum velit quidem? Dolorum, ipsa nobis eum tempore aliquid, animi culpa ex vel quibusdam dicta saepe officia! Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius corrupti maxime doloremque, provident rem in nihil impedit libero repellendus. Distinctio ipsam doloribus voluptatibus iste, dolorem animi nostrum necessitatibus voluptas molestiae. 
-                </p>
-                <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime quis nostrum expedita temporibus animi alias deleniti quo, est vero quod, deserunt sequi quisquam cupiditate excepturi. Enim alias nostrum odio architecto.
-                </p>                <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque cum eum dolore eligendi voluptatum enim aperiam sequi nihil? Sed, quaerat? Quaerat reiciendis eaque harum? Consequatur, dolore dolorem. Quidem, officia quod!
-                </p>
-                <p>
-                    This is the first blog about JS. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet quisquam, quas debitis optio, eius et ab omnis explicabo sapiente similique deserunt ducimus, harum illum ad! Eveniet velit esse iusto sequi! Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint earum quibusdam aperiam eligendi laborum velit quidem? Dolorum, ipsa nobis eum tempore aliquid, animi culpa ex vel quibusdam dicta saepe officia! Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius corrupti maxime doloremque, provident rem in nihil impedit libero repellendus. Distinctio ipsam doloribus voluptatibus iste, dolorem animi nostrum necessitatibus voluptas molestiae. 
-                </p>
-                <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime quis nostrum expedita temporibus animi alias deleniti quo, est vero quod, deserunt sequi quisquam cupiditate excepturi. Enim alias nostrum odio architecto.
-                </p>
+                <div class="date"></div>
+                <!-- 博客的正文内容 -->
+                <div id="content"></div>
             </div>
         </div>
     </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        function getBlogDetail() {
+            $.ajax({
+                type: 'get',
+                // 点击网页的inspection，在console里面，输入location.search，就会看见当前的blogId
+                // 就会拿到形如 “?blogId=5” 的一段内容。该参数是博客列表页的 <a> 标签，在生成 a 标签
+                // 的同时，给设置了 href 属性，并且把 blogId=*** 这个信息给加进去了。
+                url: 'blog' + location.search,
+                success: function(body) {
+                    // body 是一个 JS 对象
+                    // 根据 body 中的内容，构造页面，因为这些标签已经挂在DOM tree，无需再用appendChild
+                    // 1. 构造blog title
+                    let h3 = document.querySelector('.blog-content>h3');
+                    h3.innerHTML = body.title;
+                    // 2. 构造博客发布时间
+                    let date = document.querySelector('.date');
+                    date.innerHTML = body.postTime;
+                    // 3. 构造博客正文
+                    let content = document.querySelector('#content');
+                    content.innerHTML = body.content;
+
+                }
+            });
+        }
+
+        getBlogDetail();
+    </script>
 
 </body>
 </html>

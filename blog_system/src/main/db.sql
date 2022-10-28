@@ -30,6 +30,7 @@ insert into blog values(null, 'This is the 1st blog', 'I am learning Java today.
 insert into blog values(null, 'This is the 2nd blog', 'I was learning Java yesterday.', 1, now());
 insert into blog values(null, 'This is the 3rd blog', 'I was learning Java the day before.', 1, now());
 insert into blog values(null, 'This is the 1st blog', 'I am learning Java today.', 2, now());
+insert into blog values(null, 'This is the 2nd blog', 'I was learning Java yesterday.', 2, now());
 
 
 

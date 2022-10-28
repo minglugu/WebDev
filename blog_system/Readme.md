@@ -60,3 +60,35 @@ Jackson ObjectMapper class: serialize Java objects into JSON and deserialize JSO
   
 ## Data Access Object
 URL: https://www.oracle.com/java/technologies/data-access-object.html#:~:text=The%20Data%20Access%20Object%20(or,to%20a%20generic%20client%20interface
+
+## 先修改 blog_list.html 里的代码
+   此处访问的是静态页面，所以输入URL这个：http://127.0.0.1:8080/blog_system/blog_list.html
+
+问题1.
+## 博客的发布顺序和排序。 需要保证最新的博客得在最上面
+    在BlogDao中，加入order by
+
+问题2. 
+## 刷新页面的时候，页面会有个替换过程，会有页面的滞后
+删除旧的测试数据。 blog_list.html里面，注释掉
+
+## 博客详情页
+http://127.0.0.1:8080/blog_system/blog_detail.html?blogId=5 发送请求
+这个正文内容，需要继续通过 ajax 来进行获取
+在 blog_detail.html 页面加载的时候，触发 ajax 请求来访问服务器，获取到博客内容，再次填充到博客详情页里面
+1. 约定前后端接口
+2. 写后端BlogServlet class里面的doGet()
+   后端代码实现和博客列表页的获取，基本相同。所以放在doGet() 方法中实现了。使用 blogId 参数来区分是获取博客列表，还是博客详情
+3. 写前端代码。blog_detail.html
+   在前端代码这里，要构造一个请求，获取博客详情，就需要知道用户点击的博客的blogId
+   blogId就已经包含在当前的 blog_detail.html 的页面的 url(127.0.0.1:8080/blog_system/blog?blogId=5) 里了
+   用location.search 就能够获取到 ?blogId=5
+   
+   总结：希望在博客详情页，拿到博客的具体内容
+   就需要构造一个请求 /blog?blogId=5, 有了这个参数，才能够告诉服务器，需要哪个博客
+   请求是blog_detail.html 通过 ajax 发送的。blog_detail.html 就需要构造出 blogId=5 的这个参数。关键是这个参数(5)是从哪里来的呢？
+   答：当来到blog_detail.html 这个页面的时候，url 里面就已经带上了这个参数（127.0.0.1:8080/blog_system/blog?blogId=5）
+   通过location.search 就能够拿到 ?blogId=5 这段内容。从而构造出 /blog?blogId=5 这样的请求。
+   ajax中的url: 'blog' + location.search
+   
+数据流动的路径，是 web 开发中的一个难点
