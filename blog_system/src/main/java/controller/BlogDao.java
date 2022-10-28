@@ -1,3 +1,5 @@
+package controller;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -5,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-// 这个类用于去封装博客表的基本操作
+// 这个类用于封装博客表的基本操作
 public class BlogDao {
     // 1. 往博客表里, 插入一个博客.(create)
     public void insert(Blog blog) {
@@ -48,7 +50,13 @@ public class BlogDao {
                 Blog blog = new Blog();
                 blog.setBlogId(resultSet.getInt("blogId"));
                 blog.setTitle(resultSet.getString("title"));
-                blog.setContent(resultSet.getString("content"));
+                // 这里需要针对内容，进行截断(太长的情况下，就去掉后面的内容)
+                String content = resultSet.getString("content");
+                // 这个 50 的长度，是自定义的。
+                if (content.length() > 50) {
+                    content = content.substring(0,50) + "...";
+                }
+                blog.setContent(content);
                 blog.setUserId(resultSet.getShort("userId"));
                 blog.setPostTime(resultSet.getTimestamp("postTime"));
                 blogs.add(blog);

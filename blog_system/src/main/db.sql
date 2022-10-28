@@ -25,6 +25,12 @@ create table user (
 insert into user values(null, 'zhangsan', '123');
 insert into user values(null, 'lisi', '456');
 
+-- 给博客表中插入数据，方便测试
+insert into blog values(null, 'This is the 1st blog', 'I am learning Java today.', 1, now());
+insert into blog values(null, 'This is the 2nd blog', 'I was learning Java yesterday.', 1, now());
+insert into blog values(null, 'This is the 3rd blog', 'I was learning Java the day before.', 1, now());
+insert into blog values(null, 'This is the 1st blog', 'I am learning Java today.', 2, now());
+
 
 
 

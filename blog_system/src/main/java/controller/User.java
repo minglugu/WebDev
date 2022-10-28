@@ -1,3 +1,5 @@
+package controller;
+
 //每个 model.User 对象，期望能够表示 user 表中的一条记录
 public class User {
     private int userId;

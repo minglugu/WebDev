@@ -76,5 +76,73 @@
         </div>
     </div>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // 在页面加载的时候，通过 ajax 给服务器发送数据，获取到博客列表信息，并且显示在界面上。
+        function getBlogList() {
+            $.ajax({
+                type: 'get',
+                url: 'blog',    // 相对路径，不能加 '/'
+                success: function(body) {
+                    // 获取到的 body 就是一个 js 对象数组，每个元素就是一个 js 对象，
+                    // 根据这个对象来构造一个div(right) 的blog div，构建出来，拼装到页面上
+                    
+                    // 1. 先把 .right 里面原有的内容给清空
+                    let rightDiv = document.querySelector(".right");
+                    rightDiv.innerHTML = '';
+                    // 2. 遍历 body, 构造出每一个 blogDiv，构造顺序是按照上面 <div class=blog>
+                    //    里面的结构    
+                    for (let blog of body) {
+                        let blogDiv = document.createElement('div');
+                        // 设置属性
+                        blogDiv.className = 'blog';
+                        // 构造每一个blog里面的元素
+
+                        // 构造 title 
+                        let titleDiv = document.createElement('div');
+                        // 先构造 title div
+                        titleDiv.className = 'title';
+                        // 然后从数据库里面，拿到的一个 blog 对象里面的title属性
+                        titleDiv.innerHTML = blog.title; // 对应 Blog class 里面的 title 属性
+                        // blogDiv 将 titleDiv 作为子元素，添加进去
+                        blogDiv.appendChild(titleDiv);
+
+                        // 构造 date 
+                        let dateDiv = document.createElement('div');
+                        dateDiv.className = 'date';
+                        dateDiv.innerHTML = blog.postTime; // 对应 Blog class 里面的 postTime 属性
+                        blogDiv.appendChild(dateDiv);
+                        
+                        // 构造 desc
+                        let descDiv = document.createElement('div');
+                        descDiv.className = 'div';
+                        descDiv.innerHTML = blog.content; // 对应 Blog class 里面的 content 属性
+                        blogDiv.appendChild(descDiv);
+
+                        // 构造查看全文的链接
+                        let a = document.createElement('a');
+                        a.innerHTML = '查看全文 &gt;&gt';
+                        // 此处希望点击之后，进到博客详情页 !!
+                        // 这个跳转过程，需要告知服务器，要访问的是哪个博客的详情页
+                        // 要带上博客的标识。
+                        // 将这篇 blog 的 id（blog.blogId）,以参数的形式，拼接到href的属性里面。
+                        // 当点击 a 标签时，发送的http请求里面，就会带有这个路径和blog的id
+                        // 然后在博客详情页中，找到blogId，并显示具体的博客内容了
+                        a.href = 'blog_detail.html?blogId=' + blog.blogId; 
+                        blogDiv.appendChild(a);
+                        // 构造好一个 blogDiv 以后，再加到 rightDiv 里面(挂到 DOM 树上)
+                        rightDiv.appendChild(blogDiv);
+                    }
+                },
+                error: function() {
+                    alert('获取博客列表失败！');
+                }
+            });
+        }
+        getBlogList();
+
+
+    </script>
+
 </body>
 </html>

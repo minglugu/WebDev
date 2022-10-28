@@ -43,3 +43,20 @@ editor.getHTML();
 
 ## 前端引入第三方库，其实是非常容易的。
 ## 从官网，下载好第三方库，保存到自己的项目目录中，在html中引入 css或js 文件。
+
+-   每个页面都要约定前后端交互的接口
+
+
+
+## ObjectMapper:
+URL: https://www.baeldung.com/jackson-object-mapper-tutorial
+Jackson ObjectMapper class: serialize Java objects into JSON and deserialize JSON string into Java objects.
+
+- JSON to Java Object
+  objectMapper.readValue() API of the ObjectMapper parses or deserializes JSON content into a Java object.
+
+- Java Object to JSON
+  objectMapper.writeValueAsString() returns the generated JSON as a string or as a byte array.
+  
+## Data Access Object
+URL: https://www.oracle.com/java/technologies/data-access-object.html#:~:text=The%20Data%20Access%20Object%20(or,to%20a%20generic%20client%20interface
