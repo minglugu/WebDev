@@ -92,3 +92,17 @@ http://127.0.0.1:8080/blog_system/blog_detail.html?blogId=5 发送请求
    ajax中的url: 'blog' + location.search
    
 数据流动的路径，是 web 开发中的一个难点
+
+
+blog_detail.html
+约定前后端交互接口
+request:
+POST/login
+Content-Type: application/x-www-form-urlencoded     // 使用提交按钮， input type="submit"
+
+username=zhangsan&password=123
+
+response:
+HTTP/1.1 302                // 当登录成功后，就自动跳转到，主页(博客列表页)
+Location: blog_list.html
+登录页面做调整

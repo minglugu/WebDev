@@ -21,20 +21,24 @@
         <!-- <a href="#">Log Out</a> -->
     </div>
     <div class="login-container">
-        <div class="login-dialog">
-            <h3>Login</h3>
-            <div class="row">
-                <span>Username</span>
-                <input type="text" id="username">
-            </div>
-            <div class="row">
-                <span>Password</span>
-                <input type="password" id="password">
-            </div>
-            <div class="row">
-                <button>Submit</button>
-            </div>
-        </div>
+        <!-- 使用的是 form 表单，所以不需要用到 ajax 了 -->
+        <form action="login" method="POST">
+            <div class="login-dialog">
+                <h3>Login</h3>
+                <div class="row">
+                    <span>Username</span>
+                    <input type="text" id="username" name="username">
+                </div>
+                <div class="row">
+                    <span>Password</span>
+                    <input type="password" id="password" name="password">
+                </div>
+                <div class="row">
+                    <!-- <button>Submit</button> -->
+                    <input type="submit" id="submit" value="Submit">
+                </div>
+            </div>    
+        </form>
 
     </div>
 </body>

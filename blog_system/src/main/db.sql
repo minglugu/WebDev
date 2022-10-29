@@ -31,6 +31,7 @@ insert into blog values(null, 'This is the 2nd blog', 'I was learning Java yeste
 insert into blog values(null, 'This is the 3rd blog', 'I was learning Java the day before.', 1, now());
 insert into blog values(null, 'This is the 1st blog', 'I am learning Java today.', 2, now());
 insert into blog values(null, 'This is the 2nd blog', 'I was learning Java yesterday.', 2, now());
+insert into blog values(null, 'This is the 3rd blog', '# 一级标题\n ### 三级标题\n > 这是引用内容', 2, now());
 
 
 

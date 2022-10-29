@@ -57,7 +57,7 @@
                 <!-- 博客时间 -->
                 <div class="date"></div>
                 <!-- 博客的正文内容 -->
-                <div id="content"></div>
+                <div id="content" style="opacity: 80%"></div>
             </div>
         </div>
     </div>
@@ -86,7 +86,7 @@
                     // let content = document.querySelector('#content');
                     // content.innerHTML = body.content;
                     // 第一个参数，对应的是 id=content 的 html 标签，渲染后得到的 html 片段，就会被放到这个标签下，
-                    // 
+                    
                     editormd.markdownToHTML('content', {
                         markdown: body.content
                     });

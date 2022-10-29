@@ -58,19 +58,21 @@
     outline: none;
 }
 
-.row button {
+ /* button 标签被换成input了，所以 button css 失效了 */
+.row #submit {
     width: 300px;
     height: 50px;
     border-radius: 10px;
 
     color: white;
+    font-weight: bold;
     border: none;
     outline: none;
     background-color: rgb(19, 19, 109);
     margin-top: 10px;
 }
 
-.row button:active {
+.row #submit:active {
     background-color: rgb(164, 214, 234);
     color: black;
 }
