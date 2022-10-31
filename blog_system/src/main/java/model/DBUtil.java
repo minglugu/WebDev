@@ -1,9 +1,7 @@
-package controller;
+package model;
 
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

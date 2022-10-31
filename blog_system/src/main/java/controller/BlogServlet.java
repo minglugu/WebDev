@@ -1,8 +1,8 @@
-package model;
+package controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import controller.Blog;
-import controller.BlogDao;
+import model.Blog;
+import model.BlogDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 // 通过这个类，来处理 /blog 路径对应的请求
