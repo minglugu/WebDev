@@ -35,7 +35,7 @@
             <!-- 卡片表示 整个用户信息区 -->
             <div class="card">
                 <img src="image/idPhoto.jpg" alt="maple leaves">
-                <h3>Minglu Gu</h3>
+                <h3></h3>
                 <a href="#">Github Link</a>
                 <div class="counter">
                     <span>Articles</span>
@@ -100,5 +100,11 @@
     
     <!-- 在这里引入上述的 js 文件，就可以执行到里面的代码，也就进行了登录状态的检测 -->
     <script src="js/common.js"></script>
+
+    <!-- 分别在不同的页面，调用getUserinfo() -->
+    <script>
+        // 针对博客详情页，调用的时候，传入参数
+        getUserInfo('blog_detail.html');
+    </script>
 </body>
 </html>
