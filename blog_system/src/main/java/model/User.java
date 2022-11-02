@@ -2,8 +2,9 @@ package model;
 
 //每个 model.User 对象，期望能够表示 user 表中的一条记录
 public class User {
-    private int userId;
-    private String userName;
+    private int userId = 0;
+    private String userName = "";
+    private String password = "";
 
     public int getUserId() {
         return userId;
@@ -28,6 +29,4 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    private String password;
 }

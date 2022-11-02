@@ -33,6 +33,8 @@ function getUserInfo(pageName) {
     });
 }
 
+getUserInfo();
+
 // 根据博客的作者，来修改博客列表页的头像
 function changeUserName(username) {
     // 拿到博客头像里面的 card>h3 标签
