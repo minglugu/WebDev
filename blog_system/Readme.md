@@ -282,7 +282,16 @@ getUserInfo("blog_detail.html")
 如果一样的话，那么准备好在这个navDiv里，构造a 标签，并添加到里面。
 重点是 ajax 是并发执行的。
 
+JS ES6 Promise 解决了 ajax 不停套娃(一个ajax里面，调用另外一个ajax)的情况。
+Promise 会解决这个问题，用语法糖
+ES7 引用了 async 和 await，能够更加优雅得解决上述问题
+Syntactic sugar
 
+# 服务器代码处理删除的请求
+请求：
+GET /blogDelete?blogId=7
 
-    
+预期的响应
+直接跳转到 博客列表页
+
     
