@@ -11,14 +11,15 @@ function getUserInfo(pageName) {
             // 判定此处的 body，是否为一个有效的 user 对象(userId 是否 非 0)
             if (body.userId && body.userId > 0) {
                 // 登录成功，不做处理！
-                console.log("当前用户登录成功！用户名：" + body.username);
+                console.log("当前用户登录成功！用户名：" + body.userName);
                 
                 // 根据当前用户登录的情况，把当前用户名，设置到界面上
                 // 然而此处，就不该修改界面的内容了
                 // 博客详情页，就不用修改，而博客列表页，需要保留login username
                 // 博客详情页，通过其他的API来进行设定页面中的用户信息
                 if (pageName == 'blog_list.html') {
-                    changeUserName(body.username);
+                    // important: 需要写成userName，而不是userName
+                    changeUserName(body.userName);
                 }                 
             } else {
                 // 前端页面跳转的方式。此处未登录或登录失败的话，页面跳转到登录页

@@ -51,6 +51,8 @@ public class AuthorServlet extends HttpServlet {
         }
 
         // 此时作者已经查到，把 author 返回到浏览器上, 把author对象，构造成 JSON 格式的字符串
+        // Important: 把显示的密码给去掉
+        author.setPassword("");
         resp.getWriter().write(objectMapper.writeValueAsString(author));
     }
 }

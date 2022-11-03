@@ -3,12 +3,14 @@ package controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import model.Blog;
 import model.BlogDao;
+import model.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -50,5 +52,50 @@ public class BlogServlet extends HttpServlet {
             resp.setContentType("application/json; charset=utf8");
             resp.getWriter().write(respJson);
         }
+    }
+
+    // 服务器代码, 发布新写好的服务器代码
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession(false);
+        // 1. sesion 和 user 必须同时不为空，才能确认 用户已经登录
+        //    判断 session 是否为空
+        if (session == null) {
+            // 当前用户未登录，不能提交博客
+            resp.setContentType("text/html;charset=utf8");
+            resp.getWriter().write("当前用户未登录，不能提交博客");
+        }
+        User user = (User) session.getAttribute("user");
+        // 判断是否 user 为空
+        if (user == null) {
+            resp.setContentType("text/html;charset=utf8");
+            resp.getWriter().write("当前用户未登录，不能提交博客");
+        }
+
+        // 一定要指定好，请求按照那种 编码 来解析
+        req.setCharacterEncoding("utf8");
+        // 2. 先从请求中，获取到参数(博客的标题和正文)
+        String title = req.getParameter("title");
+        String content = req.getParameter("content");
+        if (title == null || "".equals(title) || content == null || "".equals(content)) {
+            // 保证中文不乱码
+            resp.setContentType("text/html;charset=utf8");
+            // 直接告诉客户端，请求参数不对
+            resp.getWriter().write("提交博客失败！缺少必要的参数！");
+        }
+        // 3. 数据正确，那么就构造 blog 对象，把当前的信息填进去，并插入到数据库中
+        // 需要指定的信息有 title, content, userId(作者信息)
+        // blogId 和 postTime 是数据库自动设置的，无需写额外的代码。
+        Blog blog = new Blog();
+        blog.setTitle(title);
+        blog.setContent(content);
+        // blog userId 如何指定？作者id就是当前提交这个博客的用户的身份信息，可以在 session 中获取到
+        // 用户对象的userId 是从 session 里面获取。所以在doPost()里，先判断session和user不为空，拿到用户信息
+        blog.setUserId(user.getUserId());
+
+        // 4. 插入数据库
+        BlogDao blogDao = new BlogDao();
+        blogDao.insert(blog);
+
     }
 }

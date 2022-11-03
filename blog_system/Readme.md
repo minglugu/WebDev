@@ -157,7 +157,100 @@ Location: blog_list.html
     }
 
     另外，对于博客详情页来说，在 getUserInfo() 里面的, 方法名需要修改 changeUserName(body.username) 
+
+视频 #37
+上述功能，就实现了把用户信息，显示到页面上(左侧卡片中)
+显示博客作者信息，而不是登录的用户的名字，到blog_detail.html
+1.  对于博客列表页，要显示登录用户的信息。登录用户的信息，再检测用户是否登录的接口中，就已经拿到了
+    只需要把拿到的用户信息，显示到界面上即可。（只是微调了前端代码，不涉及后端代码的修改）
+    blog_detail.html 里面，增加了getAuthorInfo() 这个function
+
+2.  对于博客详情页，要显示文章的作者信息，就需要提供一个新的API，让客户端传一个 blogId，在服务器这边，查询当前的用户信息
+    查到之后，返回给页面。AuthorServlet class in JAVA： 后端服务器代码
     
-    
+总结： 页面和服务器的多次交互。
+      博客列表页，涉及到两次交互：
+      1. 从服务器拿到博客列表数据
+      2. 从服务器拿到当前的登录用户信息
+
+      博客详情页，涉及到三次交互
+      1. 从服务器拿到博客的详细内容
+      2. 从服务器拿到了当前登录用户的信息
+      3. 从服务器拿到了当前blog的作者信息
+
+实现“logout”的功能，退出登录状态
+在导航栏里面，加一个“logout”按钮，当用户点击“logout”时，就会在服务器上取消登录状态，并且能够跳转到登录页面。
+注销按钮里面，这里是空的”#“。
+点击之后，就能够给服务器发送一个 HTTP 请求，从而触发注销动作。（这个动作，具体就是把会话中的信息给删除了）
+
+前后端交互接口
+请求：
+GET /logout
+
+302 是重定向
+响应：
+HTTP/1.1 302
+Location: login.html
+
+URL: https://docs.oracle.com/javaee/7/api/javax/servlet/http/HttpSession.html
+
+- removeAttribute
+void removeAttribute(String name)
+Removes the object bound with the specified name from this session. If the session does not have an object bound with the specified name, this method does nothing.
+After this method executes, and if the object implements HttpSessionBindingListener, the container calls HttpSessionBindingListener.valueUnbound. The container then notifies any HttpSessionAttributeListeners in the web application.
+
+Parameters:
+name - the name of the object to remove from this session
+Throws:
+IllegalStateException - if this method is called on an invalidated session
+
+如何定义登录？
+用户有一个session，同时session有一个user属性
+两者同时具备，才叫登录状态
+注销，只要破坏掉上面任意一个条件就行，在这个LogoutServlet 代码中，用到removeAttribute(“user”)，将user属性从session中移除。
+Servlet里面没有提供删除session的API
+在LoginServlet.java中的doGet()方法，检测登录状态的代码里面，同时需要验证session 对象 和user 属性 是否都存在，
+才能返回登录的用户对象。
+
+客户端代码的修改：
+就把 博客列表页，博客详情页，博客编辑页，这里的导航栏中的注销按钮的 href 属性
+都做出修改，改成 “logout”（相对路径） 这个路径。注意不是“/logout”（绝对路径）
+
+1) 博客列表页
+2) 博客详情页
+3) 登录功能
+4) 检测用户登录状态
+5) 显示用户信息
+6) 注销
+
+上面代码的核心逻辑都是一样的
+1) 约定前后端交互接口
+2) 实现服务器代码
+   a) 写 controller，写各种servlet来实现API
+   b) 写 model 层，通过JDBC 来操作数据库(DBUtil，Dao等等)
+3) 实现客户端代码
+   ajax/ form /a 标签跳转，来触发 HTTP 请求的
+   
+## 发布博客功能(blog_edit.html)
+在博客编辑页，写好博客标题和正文后，点击“发布文章”按钮，就会把博客数据提交给服务器，由服务器保存到数据库里。
+后续的博客列表页(blog_list.html)和博客详情页(blog_detail.html)也能够显示这个博客信息
+
+约定前后端交互接口
+请求request：带有博客内容，需要有 body 部分，所以需要用到 POST
+POST /blog                                          // 在 BlogServlet 里面，已经有 “/blog” 的请求路径，以及doGet的方法来获取blog list，
+                                                    // 那么可以增加doPost的方法，用来递交博客
+Content-Type: application/x-www-form-urlencoding
+
+title=thisistitle&content=thisisblog...             // 此处的内容都是需要 urlencoded 的，浏览器会自动进行编码
+
+响应response：
+HTTP/1.1 302
+Location: blog_list.html                            // 每次提交之后，就会回到博客列表页，新增的博客会显示在最上面
+                                                    // (按照时间排序order by)
+
+
+
+## 删除博客系统(delete a blog)
+
     
     
