@@ -64,12 +64,14 @@ public class BlogServlet extends HttpServlet {
             // 当前用户未登录，不能提交博客
             resp.setContentType("text/html;charset=utf8");
             resp.getWriter().write("当前用户未登录，不能提交博客");
+            return;
         }
         User user = (User) session.getAttribute("user");
         // 判断是否 user 为空
         if (user == null) {
             resp.setContentType("text/html;charset=utf8");
             resp.getWriter().write("当前用户未登录，不能提交博客");
+            return;
         }
 
         // 一定要指定好，请求按照那种 编码 来解析
@@ -82,6 +84,7 @@ public class BlogServlet extends HttpServlet {
             resp.setContentType("text/html;charset=utf8");
             // 直接告诉客户端，请求参数不对
             resp.getWriter().write("提交博客失败！缺少必要的参数！");
+            return;
         }
         // 3. 数据正确，那么就构造 blog 对象，把当前的信息填进去，并插入到数据库中
         // 需要指定的信息有 title, content, userId(作者信息)
@@ -97,5 +100,7 @@ public class BlogServlet extends HttpServlet {
         BlogDao blogDao = new BlogDao();
         blogDao.insert(blog);
 
+        // 5. 重定向到blog_list.html
+        resp.sendRedirect("blog_list.html");
     }
 }

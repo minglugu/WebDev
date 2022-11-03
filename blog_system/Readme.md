@@ -248,7 +248,13 @@ HTTP/1.1 302
 Location: blog_list.html                            // 每次提交之后，就会回到博客列表页，新增的博客会显示在最上面
                                                     // (按照时间排序order by)
 
-
+写完后端代码(goPost() 在BlogServlet.java), 就需要整一个 form 表单，把这里的内容套上（输入框，提交按钮）
+1. 在blog_edit.html增加form表单（line34）
+2. input 标题的输入框，增加了 name 属性，
+3. 发布按钮，改成了 input 标签, 并修改一下发布按钮的样式CSS
+4. 增加了textarea,并增加了隐藏的style(display:none)，为了后续的 form 提交
+5. 在 editor 里面，设置了一个标志位，使当前的输入框的内容 能够自动保存到textarea中。saveHTMLToTextarea: true
+6. 在blog_edit.css里面，button的css选择器，改成 id 为submit的css 选择器
 
 ## 删除博客系统(delete a blog)
 

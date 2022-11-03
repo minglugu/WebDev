@@ -28,7 +28,8 @@
     background-color: rgba(255, 255, 255, 0.8);
 }
 
-.blog-edit-container .title button {
+/* 将 button 的这个标签，改成 id 为 submit */
+.blog-edit-container .title #submit {
     width: 100px;
     height: 40px;
     border-radius: 10px;
@@ -36,9 +37,13 @@
     background-color: rgb(15, 15, 76);
     border: none;
     outline: none;
+    font-size: medium;
+    text-align: center;
+    font-weight: bold;
+    padding: 0;
 }
 
-.blog-edit-container .title button:active {
+.blog-edit-container .title #submit:active {
     background-color: #666;
 }
 

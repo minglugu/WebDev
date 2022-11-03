@@ -17,7 +17,7 @@ public class BlogDao {
 
         try {
             // 1） 和数据库建立连接
-            // connection = DBUtil.getConnection();
+            connection = DBUtil.getConnection();
             // 2） 构造sql语句
             String sql = "insert into blog values(null, ?, ?, ?, now())";
             statement = connection.prepareStatement(sql);
