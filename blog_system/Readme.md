@@ -294,4 +294,7 @@ GET /blogDelete?blogId=7
 预期的响应
 直接跳转到 博客列表页
 
+这里用到的技术：MySQL, JDBC, servlet, HTTP, Ajax, JavaScript, HTML, CSS
+
+Linux, Linux command lines + deploy the blog system in cloud server
     
