@@ -12,7 +12,7 @@ import java.sql.SQLException;
 public class DBUtil{
     private static final String URL = "jdbc:mysql://127.0.0.1:3306/java102_blog?characterEncoding=utf8&useSSL=false";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "111111";
+    private static final String PASSWORD = ""; // 部署到本地电脑，那么写本地数据库的密码。如果是云服务器，那么就是空字符串
 
     private static volatile DataSource dataSource = null;
 
