@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/blog_list.css">
+    <title>Blog</title>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="nav">
+        <img src="image/websiteLogo.jpg" alt="benches and ocean">
+        <span>My Blog</span>
+        <!-- 空白元素，用来占位置 -->
+        <div class="spacer"></div>
+        <a href="blog_list.html">Main Page</a>
+        <a href="blog_edit.html">Write Blog</a>
+        <a href="logout">Log Out</a>
+    </div>
+
+    <!-- .container 作为页面的版心 -->
+    <div class="container">
+        <!-- 左侧个人信息 -->
+        <div class="left">
+            <!-- 卡片表示 整个用户信息区 -->
+            <div class="card">
+                <img src="image/idPhoto.jpg" alt="maple leaves">
+                <h3></h3>
+                <a href="#">Github Link</a>
+                <div class="counter">
+                    <span>Articles</span>
+                    <span>Types</span>
+                </div>
+                <div class="counter">
+                    <span>2</span>
+                    <span>1</span>
+                </div>
+            </div>
+        </div>
+        <!-- 右侧内容详情 -->
+        <div class="right">
+            <!-- .blog 对应了一篇博客 -->
+            <!-- <div class="blog"> -->
+                <!-- 博客标题 -->
+                <!-- <div class="title"> 
+                    My first blog
+                </div>-->
+                <!-- 博客发布时间 -->
+                <!-- <div class="date">
+                    2022-05-05 20:52:00
+                </div> -->
+                <!-- 博客的摘要 -->
+                <!-- <div class="desc">
+                    This is the first blog about JS. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus perferendis nam sunt qui consequuntur harum, ducimus, ratione distinctio voluptas vel nulla impedit quidem aspernatur! Consequuntur pariatur ipsa exercitationem laborum voluptas? Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ullam molestiae laboriosam ducimus ratione, aliquam suscipit sunt voluptatibus aut adipisci excepturi necessitatibus iure dicta veniam facere. Ut fugiat dignissimos! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur numquam nostrum illo, recusandae reprehenderit aut dicta a doloribus dolor ex, et, deserunt totam ducimus repellat obcaecati quidem praesentium nisi beatae?
+                </div>
+                <a href="#">查看全文 &gt;&gt;</a>
+            </div> -->
+            <!-- .blog 对应了另外一篇博客 -->
+            <!-- <div class="blog"> -->
+                <!-- 博客标题 -->
+                <!-- <div class="title">
+                    My second blog
+                </div> -->
+                <!-- 博客发布时间 -->
+                <!-- <div class="date">
+                    2022-05-05 23:52:00
+                </div> -->
+                <!-- 博客的摘要 -->
+                <!-- <div class="desc">
+                    This is the second blog about JS. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus perferendis nam sunt qui consequuntur harum, ducimus, ratione distinctio voluptas vel nulla impedit quidem aspernatur! Consequuntur pariatur ipsa exercitationem laborum voluptas? Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ullam molestiae laboriosam ducimus ratione, aliquam suscipit sunt voluptatibus aut adipisci excepturi necessitatibus iure dicta veniam facere. Ut fugiat dignissimos! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur numquam nostrum illo, recusandae reprehenderit aut dicta a doloribus dolor ex, et, deserunt totam ducimus repellat obcaecati quidem praesentium nisi beatae?
+                </div>
+                <a href="#">查看全文 &gt;&gt;</a>
+            </div> -->
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // 在页面加载的时候，通过 ajax 给服务器发送数据，获取到博客列表信息，并且显示在界面上。
+        function getBlogList() {
+            $.ajax({
+                type: 'get',
+                url: 'blog',    // 相对路径，不能加 '/'
+                success: function(body) {
+                    // 获取到的 body 就是一个 js 对象数组，每个元素就是一个 js 对象，
+                    // 根据这个对象来构造一个div(right) 的blog div，构建出来，拼装到页面上
+                    
+                    // 1. 先把 .right 里面原有的内容给清空
+                    let rightDiv = document.querySelector(".right");
+                    rightDiv.innerHTML = '';
+                    // 2. 遍历 body, 构造出每一个 blogDiv，构造顺序是按照上面 <div class=blog>
+                    //    里面的结构    
+                    for (let blog of body) {
+                        let blogDiv = document.createElement('div');
+                        // 设置属性
+                        blogDiv.className = 'blog';
+                        
+                        // 构造每一个blog里面的元素
+                        // 构造 title 
+                        let titleDiv = document.createElement('div');
+                        // 先构造 title div
+                        titleDiv.className = 'title';
+                        // 然后从数据库里面，拿到的一个 blog 对象里面的title属性
+                        titleDiv.innerHTML = blog.title; // 对应 Blog class 里面的 title 属性
+                        // blogDiv 将 titleDiv 作为子元素，添加进去
+                        blogDiv.appendChild(titleDiv);
+
+                        // 构造 date 
+                        let dateDiv = document.createElement('div');
+                        dateDiv.className = 'date';
+                        dateDiv.innerHTML = blog.postTime; // 对应 Blog class 里面的 postTime 属性
+                        blogDiv.appendChild(dateDiv);
+                        
+                        // 构造 desc
+                        let descDiv = document.createElement('div');
+                        descDiv.className = 'div';
+                        descDiv.innerHTML = blog.content; // 对应 Blog class 里面的 content 属性
+                        blogDiv.appendChild(descDiv);
+
+                        // 构造查看全文的链接
+                        let a = document.createElement('a');
+                        a.innerHTML = '查看全文 &gt;&gt';
+                        // 此处希望点击之后，进到博客详情页 !!
+                        // 这个跳转过程，需要告知服务器，要访问的是哪个博客的详情页
+                        // 要带上博客的标识。
+                        // 将这篇 blog 的 id（blog.blogId）,以参数的形式，拼接到href的属性里面。
+                        // 当点击 a 标签时，发送的http请求里面，就会带有这个路径和blog的id
+                        // 然后在博客详情页中，找到blogId，并显示具体的博客内容了
+                        a.href = 'blog_detail.html?blogId=' + blog.blogId; 
+                        blogDiv.appendChild(a);
+                        // 构造好一个 blogDiv 以后，再加到 rightDiv 里面(挂到 DOM 树上)
+                        rightDiv.appendChild(blogDiv);
+                    }
+                },
+                error: function() {
+                    alert('获取博客列表失败！');
+                }
+            });
+        }
+        getBlogList();
+
+    </script>
+    
+    <!-- 在这里引入上述的 js 文件，就可以执行到里面的代码，也就进行了登录状态的检测 -->
+    <script src="js/common.js"></script>
+
+    <!-- 分别在不同的页面，调用getUserinfo() -->
+    <script>
+        // 针对博客列表页，调用的时候，传入参数
+        getUserInfo('blog_list.html');
+    </script>
+</body>
+</html>

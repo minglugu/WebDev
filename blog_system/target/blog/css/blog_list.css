@@ -1,0 +1,52 @@
+/* 和博客列表页相关的样式 .right */
+.blog {
+    width: 100%;
+    /* 如果不设置高度，就取决于里面的内容高度的综合 */
+
+    padding: 20px;
+}
+.blog .title {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 10px 0;
+}
+
+.blog .date {
+    text-align: center;
+    color: rgb(29, 113, 29);
+    padding: 10px 0;
+    font-weight: bold;
+
+}
+
+.blog .desc {
+    text-indent: 2em;
+}
+
+.blog a {
+    /* 设置成块级元素，方便设置尺寸和边框 */
+    display: block;
+    width: 140px;
+    height: 40px;
+    margin: 10px auto;
+    border: 2px solid gray;
+
+    color: rgb(51, 45, 45);
+    line-height: 40px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 6px;
+
+    /* 如果想让变化柔和一些，可以加上过渡效果,1秒的逐渐变化的效果 */
+    transition: all 0.5s;
+}
+
+.blog a:hover {
+    background: blue;
+    color: aquamarine;
+}
+
+.container .right {
+
+}

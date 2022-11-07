@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/blog_detail.css">
+    
+    <!-- 引入 editor.md 的依赖 -->
+    <link rel="stylesheet" href="editor.md/css/editormd.min.css" />
+    <script src="js/jquery.min.js"></script>
+    <script src="editor.md/lib/marked.min.js"></script>
+    <script src="editor.md/lib/prettify.min.js"></script>
+    <script src="editor.md/editormd.js"></script>
+
+    <title>Blog Details</title>
+</head>
+<body>
+    <!-- Navigation Bar 导航栏 -->
+    <div class="nav">
+        <img src="image/websiteLogo.jpg" alt="benches and ocean">
+        <span>My Blog</span>
+        <!-- 空白元素，用来占位置 -->
+        <div class="spacer"></div>
+        <a href="blog_list.html">Main Page</a>
+        <a href="blog_edit.html">Write Blog</a>
+        <a href="logout">Log Out</a>
+    </div>
+
+    <!-- .container 作为页面的版心 -->
+    <div class="container">
+        <!-- 左侧个人信息 -->
+        <div class="left">
+            <!-- 卡片表示 整个用户信息区 -->
+            <div class="card">
+                <img src="image/idPhoto.jpg" alt="maple leaves">
+                <h3></h3>
+                <a href="#">Github Link</a>
+                <div class="counter">
+                    <span>Articles</span>
+                    <span>Types</span>
+                </div>
+                <div class="counter">
+                    <span>2</span>
+                    <span>1</span>
+                </div>
+            </div>
+        </div>
+        <!-- 右侧内容详情 -->
+        <div class="right">
+            <!-- 这个 div 来包裹整个博客的内容详情 -->
+            <div class="blog-content">
+                <!-- 一下内容(标题，博客发布时间以及正文内容，都用JS来动态实现) -->
+                <!-- blog title -->
+                <h3></h3>
+                <!-- 博客时间 -->
+                <div class="date"></div>
+                <!-- 博客的正文内容 -->
+                <div id="content" style="opacity: 80%"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 在这里引入上述的 js 文件，就可以执行到里面的代码，也就进行了登录状态的检测 -->
+    
+    <script>
+        function getBlogDetail() {
+            $.ajax({
+                type: 'get',
+                // 点击网页的inspection，在console里面，输入location.search，就会看见当前的blogId
+                // 就会拿到形如 “?blogId=5” 的一段内容。该参数是博客列表页的 <a> 标签，在生成 a 标签
+                // 的同时，给设置了 href 属性，并且把 blogId=*** 这个信息给加进去了。
+                url: 'blog' + location.search,
+                success: function(body) {
+                    // body 是一个 JS 对象
+                    // 根据 body 中的内容，构造页面，因为这些标签已经挂在DOM tree，无需再用appendChild
+                    // 1. 构造blog title
+                    let h3 = document.querySelector('.blog-content>h3');
+                    h3.innerHTML = body.title;
+                    // 2. 构造博客发布时间
+                    let date = document.querySelector('.date');
+                    date.innerHTML = body.postTime;
+                    // 3. 构造博客正文
+                    //    用 editor.md 的库，将 markdown 的文本内容，渲染成带有特定样式的 html 片段
+                    // 如果直接把 content 设为 innerHTML, 此时展示在界面上的内容，就是原始的 markdown 字符串
+                    // 咱们需要的是渲染后的，带有格式的效果
+                    // let content = document.querySelector('#content');
+                    // content.innerHTML = body.content;
+                    // 第一个参数，对应的是 id=content 的 html 标签，渲染后得到的 html 片段，就会被放到这个标签下，
+                    
+                    editormd.markdownToHTML('content', {
+                        markdown: body.content
+                    });
+                }
+            });
+        }
+
+        getBlogDetail();  
+        
+        // 加上一个逻辑，通过 GET /login 这个接口，来获取到当前的登录状态
+        function getUserInfo(pageName) {
+            $.ajax({
+                type: "get",
+                url: "login",
+                success: function(body) {
+                    // 判定此处的 body，是否为一个有效的 user 对象(userId 是否 非 0)
+                    if (body.userId && body.userId > 0) {
+                        // 登录成功，不做处理！
+                        console.log("当前用户登录成功！用户名：" + body.userName);
+
+                        // 根据当前用户登录的情况，把当前用户名，设置到界面上
+                        // 然而此处，就不该修改界面的内容了
+                        // 博客详情页，就不用修改，而博客列表页，需要保留login username
+                        // 博客详情页，通过其他的API来进行设定页面中的用户信息
+                        // if (pageName == 'blog_list.html') {
+                        //     // important: 需要写成userName，而不是userName
+                        //     changeUserName(body.userName);
+                        // }          
+                        
+                        // 在 getUserInfo 的回调函数中，来调用获取作者信息
+                        // 在这种情况下，调用的先后顺序就确定下来了，
+                        // 先调用user的信息，再获取作者的信息，将并发的情况变成先后的
+                        // 串行顺序
+                        getAuthorInfo(body);
+                    } else {
+                        // 前端页面跳转的方式。此处未登录或登录失败的话，页面跳转到登录页
+                        alert("当前尚未登录，请登录后再访问博客列表！");
+                        location.assign("blog_login.html");
+                    }
+                },
+                error: function() {
+                    alert("当前尚未登录，请登录后再访问博客列表！");
+                    location.assign("blog_login.html");
+                }
+            });
+        }
+      
+        // 针对博客详情页，调用的时候，传入参数
+        // 分别在不同的页面，调用getUserinfo()
+        // 从而判定用户的登录状态
+        getUserInfo('blog_detail.html');
+
+        // 从服务器获取一下，当前博客的作者信息，并显示到界面上。
+        // 参数 user，就是刚才从服务器拿到的当前登录用户的信息
+        function getAuthorInfo(user) {
+            $.ajax({
+                type: 'get',
+                url: 'authorInfo' + location.search,
+                success: function(body) {
+                    // 此处的 body，就是服务器返回的 User 对象，是文章的作者信息
+                    // 取出 User 对象里面的字段，来进行设置
+                    if (body.userName) {
+                        // 如果userName存在，直接设置到页面上 
+                        changeUserName(body.userName);
+
+                        // 进一步判定，文章作者的信息跟登录用户的信息是否是同一个
+                        if(body.userName == user.userName) {
+                            // 以下是显示删除按钮的功能
+                            let navDiv = document.querySelector('.nav');
+                            let a = document.createElement('a');
+                            a.innerHTML = 'Del';
+                            // 期望点击删除，构造一个形如 blogDelete?blogId=11 这样的请求
+                            a.href = 'blogDelete' + location.search;
+                            navDiv.appendChild(a);
+                        }
+                    } else {
+                        console.log("获取作者信息失败" + body.reason);
+                    }
+                }
+            });
+        }
+
+        // 根据博客的作者，来修改博客列表页的头像
+        function changeUserName(username) {
+            // 拿到博客头像里面的 card>h3 标签
+            let h3 = document.querySelector('.card>h3');
+            // 根据从服务器获取的当前用户名，来修改博客列表页的名字。
+            // 这里的username是形参，传参到 h3 里的
+            h3.innerHTML = username;
+        }
+    </script>
+    
+</body>
+</html>

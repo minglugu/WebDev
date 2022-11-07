@@ -1,0 +1,126 @@
+/* 各个页面用到的公共样式 */
+
+/* 去掉浏览器的默认样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    font-size: bold;
+}
+
+/* 给整个页面加背景图. html 的父元素就是浏览器窗口，100% 的意思是 html 元素的高度和浏览器窗口一样高
+当前body的父元素，就是html。此处的100% 意思就是 html 多高，body 就是多高*/
+html, body {
+    height: 100%;
+}
+
+body {
+    background-image: url('../image/cat.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.nav {
+    width: 100%;
+    height: 50px;
+
+    /* alpha: 透明度 */
+    background-color: rgba(51, 51, 51, 0.4);
+    color: white;
+    font-weight: bold;
+
+    /* 导航栏内部的内容，都是一行排列，需要使用flex 布局来排列 */
+    display: flex;
+
+    /* 子元素 垂直居中 */
+    align-items: center;
+}
+
+.nav img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+
+    margin-left: 30px;
+    margin-right: 10px;
+}
+
+/* 空白元素占位符，不利于responsive web design */
+.nav .spacer {
+    /* 相对于父元素(.nav)，如果 nav 宽度是1000px, 那么 .spacer 就是 750px*/
+    width: 72%;
+}
+
+.nav a {
+    text-decoration: none;
+    color: white;
+    padding: 0 10px;
+}
+
+/* 版心相关的样式 */
+.container {
+    /* 版心不是和窗口一样宽的 */
+    width: 1000px;
+    /* CSS3 calc() */
+    height: calc(100% - 50px);
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 版心 的 left 和 right 的设置 */
+/* div （.left .right）是块级元素，默认独占一行
+   如果需要让多个 div 在一行排列，就需要使用 弹性布局 */
+.container .left {
+    width: 200px;
+    height: 100%;
+}
+
+.container .right {
+    width: 795px;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    overflow: auto;
+}
+
+/* card 部分的样式 */ 
+.card {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    /* 通过这里的内边距，就可以让狗头居中 
+        上下左右 都是30px*/
+    padding: 30px;
+}
+
+/*头像设置 */
+.card img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+}
+
+/* h3的设置，居中，以及top有间隙 */
+.card h3 {
+    text-align: center; 
+    padding: 10px;
+}
+
+.card a {
+    /* a 默认是行内元素，很多边距不生效，为了简单起见，直接设为块级元素 */
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: grey;
+    padding: 10px;
+}
+
+.card .counter {
+    /* 弹性布局 */
+    display: flex;
+    justify-content: space-around;
+    padding: 6px;
+}
