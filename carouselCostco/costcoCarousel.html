@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Costco Carousel</title>
+    <link rel="stylesheet" href="costcoCarousel.css">
+    <!-- add "defer" to make sure this js file is loaded after HTML -->
+    <script src="costcoCarousel.js" defer></script>
+    <script src="https://kit.fontawesome.com/611d4b4080.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- add "<" and ">" arrows to carousel -->
+    <div class="carousel" data-carousel>
+        <!-- left arrow(html code: &#60;)) and right arrow(html code: &#62;) 
+            find arrows of html entities from https://www.toptal.com/designers/htmlarrows/
+        -->
+        <button class="carousel-but-prev" data-carousel-arrow>&#60;</button>
+        <button class="carousel-but-next" data-carousel-arrow>&#62;</button>
+        <div id="imgContainer" data-slides></div>
+    </div>
+
+    <div id="btnContainer"></div>
+
+</body>
+</html> 
