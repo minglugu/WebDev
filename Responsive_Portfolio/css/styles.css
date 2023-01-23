@@ -10,8 +10,11 @@
     --header-height: 3rem;
 
     /* ========= Colors ========= */
-    /* Change favorite color */
-    --hue-color: ;
+    /* Change favorite color 
+       enter a regular color value, e.g. blue, find the color in the color scheme,
+       click the color value on the top to change value into hsl. find the exact value
+       of that color I like */
+    --hue-color: 182;
 
     /* hsl: hue, saturation, and lightness */
     --first-color: hsl(var(--hue-color), 69%, 61%);
