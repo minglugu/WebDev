@@ -29,7 +29,7 @@ const btnContainer = document.getElementById('btnContainer')
 // 3. create click function and add this function to button (此函数在button元素中添加了index属性，点击相应index位置的button,将会激活相应位置的图片）
 function clickFun(evt) {
     imgIndex = evt.target.getAttribute(clickIndex)
-    switchImgBtn()
+    switchImgBtnRight()
     clearInterval(timerID2)
 }
 
@@ -64,8 +64,9 @@ function createCarousel(){
     }
 }
 
-// 5. Creating a function can change images and buttons (创建能自动播放的图片和按钮功能）
-function switchImgBtn (){
+// 5-1. Creating a function can change images and buttons (创建能自动播放的图片和按钮功能）
+//    此处还有个功能，就是当点击carousel上面的右边的箭头，图片自动向右移动
+function switchImgBtnRight (){
     //hide all img element
     for (let i = 0; i < eleImgArr.length; i++) {
         eleImgArr[i].style.display = 'none'
@@ -75,14 +76,27 @@ function switchImgBtn (){
     if (imgIndex > eleImgArr.length) {imgIndex = 1}
     eleImgArr[imgIndex - 1].style.display = 'block'
     eleBtnArr[imgIndex - 1].className += 'active'
+}
+
+// 5-2. 当点击carousel上面的左边的箭头，图片自动向左移动
+function switchImgBtnLeft (){
+    imgIndex = eleImgArr.length - 1
+    //hide all img element
+    for (let i = 0; i < eleImgArr.length; i++) {
+        eleImgArr[i].style.display = 'none'
+        eleBtnArr[i].className = eleBtnArr[i].className.replace('active', '')
     }
+    imgIndex--
+    if (imgIndex < 0) {imgIndex = eleImgArr.length}
+    eleImgArr[imgIndex - 1].style.display = 'block'
+    eleBtnArr[imgIndex - 1].className += 'active'
+}
 
-
-// 6. Creating a function can choose image by previous and next anchor
+// 6. Creating a function that can choose image by previous and next anchor
 
 createCarousel()
-switchImgBtn()
-timerID2 = setInterval(switchImgBtn, 2000);
+switchImgBtnRight()
+timerID2 = setInterval(switchImgBtnRight, 2000);
 
 
 // 7. the following is the newly adeed code for clickable arrows on the carousel
@@ -101,10 +115,14 @@ so on the button attribute, I add "data-carousel-arrow" in costcoCarousel.html
 
    // loop through each of the carousel images: this function swithcImgBtn() does the looping work
    // for each of the arrow, addEventListener which will be the "click" event listener.
-   // Then it just moves to the next image [this code: () => {}] by calling switchImgBtn() function.
+   // Then it just moves to the next image [this code: () => {}] by calling switchImgBtnRight() function.
    arrows.forEach(arrow => {
        arrow.addEventListener("click", () => {
-           switchImgBtn()
+            if (arrow.dataset.carouselArrow === "prev") {
+                switchImgBtnLeft()
+            } else if (arrow.dataset.carouselArrow === "next") {
+                switchImgBtnRight()
+            }
        })
    })
    
