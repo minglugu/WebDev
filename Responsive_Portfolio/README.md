@@ -10,7 +10,6 @@ testimonial1.jpg
 testimonial2.jpg
 testimonial3.jpg
 
-@24:27
 
 Bedimcode: Responsive Personal Portfolio Website Using HTML CSS and JavaScript
 
