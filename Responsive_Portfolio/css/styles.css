@@ -360,7 +360,7 @@ img {
 /* ========= ABOUT ========= */
 .about__img {
     width: 200px;
-    border-radius: 0.5rem;
+    border-radius: 50%;
     justify-self: center;
     align-self: center;
 }
@@ -433,12 +433,94 @@ img {
     transition: .4s;
 }
 
+.skills__list {
+    row-gap: 1.5rem;
+    padding-left: 2.7rem;
+}
+
 /* subsection under main title */
 .skills__titles {
     display: flex;
     justify-content: space-between;
     margin-bottom: var(--mb-0-5);
 }
+
+.skills__name {
+    font-size: var(--normal-font-size);
+    font-weight: var(--font-medium);
+}
+
+.skills__bar,
+.skills__percentage {
+    height: 5px;
+    border-radius: 0.25rem;
+}
+
+.skills__bar {
+    background-color: var(--first-color-lighter);
+}
+
+.skills__percentage {
+    display: block;
+    background-color: var(--first-color);
+}
+
+.skills__html {
+    width: 50%;
+}
+
+.skills__css {
+    width: 40%;
+}
+
+.skills__js {
+    width: 50%;
+}
+
+.skills__react {
+    width: 65%;
+}
+
+.skills__java {
+    width: 70%;
+}
+
+.skills__spring {
+    width: 50%;
+}
+
+.skills__mysql {
+    width: 40%;
+}
+
+.skills__linux {
+    width: 20%;
+}
+
+.skills__figma {
+    width: 40%;
+}
+
+.skills__balsamiq {
+    width: 30%;
+}
+
+.skills__close .skills__list{
+    height: 0;
+    overflow: hidden;
+}
+
+.skills__open .skills__list {
+    height: max-content;
+    margin-bottom: var(--mb-2-5);
+}
+
+.skills__open .skills__arrow {
+    transform: rotate(-180deg);
+}
+
+
+
 /* ========= QUALIFICATION ========= */
 
 /* ========= PROJECTS ========= */

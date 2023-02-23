@@ -28,4 +28,5 @@ about_info-name
 Years <br> experience
 Completed <br> project
 
-
+Select multiple lines 
+Ctrl+D selects the word at the cursor, or the next occurrence of the current selection.
