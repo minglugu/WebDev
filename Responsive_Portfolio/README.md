@@ -30,3 +30,9 @@ Completed <br> project
 
 Select multiple lines 
 Ctrl+D selects the word at the cursor, or the next occurrence of the current selection.
+
+Fixed the toggle issue by deleting
+"    <!-- ========= JS ========= -->>
+    <script src="js/main.js"></script>" in index.html
+and fixing the className skill__header in main.js
+"skillsHeader = document.querySelectorAll('.skill__header') "
